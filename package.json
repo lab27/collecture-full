@@ -1,0 +1,32 @@
+{
+  "name": "cllctr-fllpg",
+  "version": "1.0.0",
+  "description": "Welcome to Collecture",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lab27/cllctr-fllpg.git"
+  },
+  "keywords": [
+    "collecture"
+  ],
+  "author": "Nick Niles",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lab27/cllctr-fllpg/issues"
+  },
+  "homepage": "https://github.com/lab27/cllctr-fllpg#readme",
+  "devDependencies": {
+    "browser-sync": "^2.18.2",
+    "fullpage.js": "^2.9.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-include": "^2.3.1",
+    "gulp-sass": "^2.3.2",
+    "gulp-util": "^3.0.7",
+    "reset-css": "^2.2.0"
+  }
+}

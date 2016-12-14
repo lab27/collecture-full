@@ -1,0 +1,204 @@
+/*=include ../node_modules/reset-css/reset.css*/
+/*=include ../node_modules/fullpage.js/dist/jquery.fullpage.css*/
+
+* {
+	box-sizing: border-box;
+}
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == "small" {
+    @media (min-width: 0px) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint == "medium" {
+    @media (min-width: 640px) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint == "large" {
+    @media (min-width: 1024px) {
+      @content;
+    }
+  }
+
+    @else if $breakpoint == "xlarge" {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  }
+
+    @else if $breakpoint == "xxlarge" {
+    @media (min-width: 1440px) {
+      @content;
+    }
+  }
+}
+
+@font-face {
+  font-family: 'gl';
+  src: url('../fonts/gl.eot');
+  src: local('☺'), url('../fonts/gl.woff') format('woff'), url('../fonts/gl.ttf') format('truetype'), url('../fonts/gl.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ginger-bold';
+  src: url('../fonts/F37Ginger-Bold.eot');
+  src: url('../fonts/F37Ginger-Bold.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/F37Ginger-Bold.woff2') format('woff2'),
+    url('../fonts/F37Ginger-Bold.woff') format('woff'),
+    url('../fonts/F37Ginger-Bold.ttf') format('truetype'),
+    url('../fonts/F37Ginger-Bold.svg#F37Ginger-Bold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ginger-light';
+  src: url('../fonts/F37Ginger-Light.eot');
+  src: url('../fonts/F37Ginger-Light.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/F37Ginger-Light.woff2') format('woff2'),
+    url('../fonts/F37Ginger-Light.woff') format('woff'),
+    url('../fonts/F37Ginger-Light.ttf') format('truetype'),
+    url('../fonts/F37Ginger-Light.svg#F37Ginger-Light') format('svg');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ginger';
+  src: url('../fonts/F37Ginger.eot');
+  src: url('../fonts/F37Ginger.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/F37Ginger.woff2') format('woff2'),
+    url('../fonts/F37Ginger.woff') format('woff'),
+    url('../fonts/F37Ginger.ttf') format('truetype'),
+    url('../fonts/F37Ginger.svg#F37Ginger') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$blue: #39beca;
+$green: #4bddad;
+$dark: #353F50;
+$gray: #c3cbd5;
+$light-gray: #f4f9fa;
+$orange: #c9a03a;
+$red: #4d4a49;
+
+body {
+	background: $blue;
+    transition: background .5s;
+    color: white;
+    font-family: 'ginger';
+    text-align: center;
+    padding: 24px;
+}
+
+body.fp-viewing-one {
+    background: $blue;
+}
+
+body.fp-viewing-two {
+    background: $blue;
+}
+
+body.fp-viewing-three {
+    background: $dark;
+}
+
+body.fp-viewing-four {
+    background: $blue;
+}
+
+body.fp-viewing-five {
+    background: $green;
+}
+
+footer {
+	position: absolute;
+  bottom: -17px;
+  left: 24px;
+  width: 100vw;
+  text-align: center;
+  height: 120px;
+
+  @include respond-to(medium){
+  	text-align: left;
+  }
+
+  img {
+  	width: 120px;
+  	height: 120px;
+  }
+}
+
+a {
+	color: white;
+	text-decoration: none;
+}
+
+.header-right {
+	
+	width: 50%;
+	display:inline-block;
+	float: right;
+	text-align: right;
+}
+
+.float-right {
+	display: inline-block;
+	float: right;
+}
+
+.left-margin {
+	margin-left: 12px;
+}
+
+.pill-btn {
+	background:white;
+	padding: .6em 1em;
+	color: $blue;
+	border-radius: 1.2em;
+}
+
+#header {
+	position: absolute;
+	top: 0;
+	left:0;
+	right:0;
+	height: 60px;
+	width: 100vw;
+	padding: 24px;
+	text-align: left;
+
+}
+
+.section {
+	padding-left: 24px;
+	padding-right: 24px;
+}
+
+h1 {
+	font-size: 2rem;
+	margin-bottom: 1rem;
+	letter-spacing: .05rem;
+@include respond-to(medium) { 
+	font-size: 3rem;
+}
+
+}
+
+p.lead {
+font-size: 1.1rem;
+line-height: 1.5rem;
+margin: 0 auto;
+letter-spacing:.04rem;
+@include respond-to(medium){
+	max-width: 30vw;
+
+}
+}
