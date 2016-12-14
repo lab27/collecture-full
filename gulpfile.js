@@ -33,9 +33,7 @@ gulp.task('css', () => {
     extensions: "css",
     hardFail: true,
     includePaths: [
-      __dirname + "/node_modules"
-     // __dirname + "/src/js"
-    ]
+      __dirname + "/node_modules"]
   }))
     .pipe(gulp.dest('css'));
 });
