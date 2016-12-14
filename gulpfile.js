@@ -13,7 +13,14 @@ const jsFiles = 'js/*.js';
 
 gulp.task("scripts", function() {
    gulp.src("js/app.js")
-    .pipe(include())
+    .pipe(include({
+    extensions: "js",
+    hardFail: true,
+    includePaths: [
+      __dirname + "/node_modules"
+      
+    ]
+  }))
       .on('error', console.log)
     .pipe(gulp.dest("_site/js"));
 });
