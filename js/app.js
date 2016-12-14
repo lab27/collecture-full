@@ -1,5 +1,5 @@
-//=require ../node_modules/jquery/dist/jquery.js
-//=include ../node_modules/fullpage.js/dist/jquery.fullpage.js 
+//=require jquery/dist/jquery.js
+//=include fullpage.js/dist/jquery.fullpage.js 
 
 
 TweenMax.staggerFrom('.callout',.5,{opacity:0, marginTop: 100},.2);
