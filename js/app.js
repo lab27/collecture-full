@@ -269,5 +269,5 @@ $(document).ready(function() {
 
 var getCurrentLabel = function(){
     crntLbl = wholeMovie.currentLabel()
-    $("#header a").text(nxtIndx + ":" +crntLbl)
+    // $("#header a").text(nxtIndx + ":" +crntLbl)
 }
