@@ -1,0 +1,16 @@
+  <defs>
+    <style>
+
+      .cls-1 {
+        fill: #4bddad;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #4bddad;
+        stroke-linecap: round;
+        stroke-miterlimit: 10;
+        stroke-width: 10px;
+      }
+    </style>
+  </defs>

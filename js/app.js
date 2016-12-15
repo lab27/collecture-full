@@ -88,6 +88,7 @@ $(document).ready(function() {
         afterRender: function(){
             console.log("+++++++++++++++++++")
             console.log("just rendered")
+            $('#fullpage').css('display','block')
         },
         afterResize: function(){
         console.log("+++++++++++++++++++")
