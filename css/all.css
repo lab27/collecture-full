@@ -397,3 +397,6 @@ p.lead {
   @media (min-width: 640px) {
     p.lead {
       max-width: 30vw; } }
+
+#fp-nav ul li a span, .fp-slidesNav ul li a span {
+  background: white; }
