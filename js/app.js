@@ -21,9 +21,9 @@ $(document).ready(function() {
         menu: '#menu',
         lockAnchors: false,
         anchors:['one', 'two','three','four','five','six'],
-        navigation: false,
+        navigation: true,
         navigationPosition: 'right',
-        navigationTooltips: ['firstSlide', 'secondSlide'],
+        //navigationTooltips: ['intro', 'secondSlide'],
         showActiveTooltip: false,
         slidesNavigation: false,
         slidesNavPosition: 'bottom',
@@ -63,7 +63,6 @@ $(document).ready(function() {
         //Design
         controlArrows: true,
         verticalCentered: false,
-        //sectionsColor : ['#ccc', '#fff'],
         paddingTop: '5em',
         paddingBottom: '10px',
         fixedElements: '#header, .footer',
@@ -78,10 +77,22 @@ $(document).ready(function() {
         lazyLoading: true,
 
         //events
-        onLeave: function(index, nextIndex, direction){},
-        afterLoad: function(anchorLink, index){},
-        afterRender: function(){},
-        afterResize: function(){},
+        onLeave: function(index, nextIndex, direction){
+            console.log("+++++++++++++++++++")
+            console.log("leaving: " + index)
+        },
+        afterLoad: function(anchorLink, index){
+            console.log("+++++++++++++++++++")
+            console.log("just loaded: " + anchorLink)
+        },
+        afterRender: function(){
+            console.log("+++++++++++++++++++")
+            console.log("just rendered")
+        },
+        afterResize: function(){
+        console.log("+++++++++++++++++++")
+            console.log("just resized")
+        },
         afterResponsive: function(isResponsive){},
         afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex){},
         onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){}

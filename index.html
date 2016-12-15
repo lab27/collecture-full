@@ -3,27 +3,24 @@ layout: default
 title: Home Page
 ---
 <div id="fullpage">
-<div id="header">
-<a  href="#one">collecture</a>
-
-<div class="header-right">
-<a href="#">login</a>
-<a class="pill-btn white left-margin" href="#">sign up</a>
-</div>
-
-</div>
-	{% for heading in site.data.headings %}
-	<div class="section">
-		<h1>{{heading.title}}</h1>
-		<p class="lead">{{heading.subtitle}}</p>
+	<div id="header">
+		<a  href="#one">collecture</a>
+		<div class="header-right">
+			<a href="#">login</a>
+			<a class="pill-btn white left-margin" href="#">sign up</a>
+		</div>
 	</div>
-	
-{% endfor %}
+	{% for heading in site.data.headings %}
+		<div class="section" data-tooltip="{{heading.tooltip}}">
+			<h1>{{heading.title}}</h1>
+			<p class="lead">{{heading.subtitle}}</p>
+		</div>
+		
+	{% endfor %}
 </div>
-
 <footer>
 	<a href="https://itunes.apple.com/ch/app/collecture/id1185222314?l=en&mt=8" target="_blank">
-	<img src="assets/images/app-store-badge.svg" />
+		<img src="assets/images/app-store-badge.svg" />
 	</a>
 	<img src="assets/images/google-play-badge.svg" />
 </footer>
