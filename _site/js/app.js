@@ -1,5 +1,3 @@
-
-
 //SVG vars
 var peopleBlur = document.getElementById('blurAmt');
 var phoneBlur = document.getElementById('phoneBlurAmt');
@@ -7,6 +5,10 @@ var people = $("#people")
 var person = $("g[data-name='person']");
 var pointhand = $("#point-hand")
 var handphone = $("#handphone")
+var body = $("body")
+var footer = $("footer")
+var crntLbl = ""
+var nxtIndx = ""
 
 //Colors
 var blue = "#39beca",
@@ -15,62 +17,120 @@ var blue = "#39beca",
     gray= "#c3cbd5",
     lightGray= "#f4f9fa",
     orange= "#c9a03a",
-    red= "#4d4a49";
+    red= "#fd4a49";
 
 //Initial sets:
+TweenMax.set(pointhand,{x:1000,y:1000})
+
+var tmax_options = {
+  delay: 0,
+  paused: true,
+  onComplete: function() {
+    console.log('animation is complete');
+  },
+  onCompleteScope: {},
+  tweens: [],
+  stagger: 0,
+  align: 'normal',
+  useFrames: false,
+  onStart: function() {
+    console.log('on start called');
+    //showNextMsg();
+  },
+  onStartScope: {},
+  onUpdate: function() {
+    console.log('on update called');
+    getCurrentLabel()
+  },
+  onUpdateScope: {},
+  onRepeat: function() {
+    console.log('on repeat called');
+  },
+  onRepeatScope: {},
+  onReverseComplete: function() {
+    console.log('on reverse complete');
+  },
+  onReverseCompleteScope: {},
+  autoRemoveChildren: false,
+  smoothChildTiming: false,
+  repeat: 0,
+  repeatDelay: 0,
+  yoyo: false,
+  onCompleteParams: [],
+  onReverseCompleteParams: [],
+  onStartParams: [],
+  onUpdateParams: [],
+  onRepeatParams: []
+};
 
 //Whole Timeline:
-var wholeMovie = new TimelineMax();
+var wholeMovie = new TimelineMax(tmax_options);
 
 wholeMovie.add('intro')
         //bgColor
-        .to($("body"),.5,{backgroundColor:blue},"+=2")
-        
-        //hand down
-        .to(pointhand,.5,{y:500, x:500,autoAlpha:0})
+        .to($("body"),.5,{backgroundColor:blue})
         //phone up
-        .to(handphone,1,{y:0, x:0, ease:Power4.easeOut})
+        .to(handphone,1,{x:0, y:0, ease:Power4.easeOut})
+        //hand down
+        .to(pointhand,.5,{x:800, y:800}, "-=.5")
         //blur the people
         .to(peopleBlur, 0.6,{attr:{stdDeviation:10}})
-                //hide the people
+        //hide the people
         .staggerTo(person,.2,{autoAlpha: 0},.1)
-        .addPause()
+        // .addPause()
     .add('ease')
         // bgColor:
-        .to($("body"),.5,{backgroundColor:blue},"+=2")
-        .to(pointhand,.2,{autoAlpha:1})
-        .to(pointhand,.5,{y:0, x:0, ease:Power4.easeInOutCubic})
-        .to(pointhand,1.5,{y:500,x:500, ease:Power4.easeOut},"+=.2")
-        .to(pointhand,.2,{autoAlpha:0})
-        .to(handphone,.5,{y:500,x:0,  ease:Power4.easeOut},"-=.5")
+        .to(body,.5,{backgroundColor:blue})
+        //show the people
+        .staggerTo(person,.2,{autoAlpha: 1},.1)
+        //pointer visible
+        //.to(pointhand,.2,{autoAlpha:1},"-=.2")
+        //pointer to zero
+        .to(pointhand,.5,{x:0, y:0, ease:Power4.easeInOutCubic})
+        //pointer stays, then goes back down
+        .to(pointhand,1,{x:500,y:500, ease:Power4.easeOut},"+=.2")
+        //pointer invisible:
+        //.to(pointhand,.2,{autoAlpha:0})
         //unblur the people
-        .to(peopleBlur, 0.6,{attr:{stdDeviation:0}},"-=1")
+        .to(peopleBlur, 0.6,{attr:{stdDeviation:0}})
         //blur the phone
-        .to(phoneBlur, 0.6,{attr:{stdDeviation:5}},"-=1")
-        .addPause()
+        .to(phoneBlur, 0.6,{attr:{stdDeviation:6}})
+        //hand/phone down:
+        .to(handphone,.7,{x:0, y:500, ease:Power4.easeInOutCubic},"-=1")
+        // .addPause()
     .add('groups')
-        .to($("body"),.5,{backgroundColor:dark})
-        .to(phoneBlur, 0.6,{attr:{stdDeviation:0}})
-        .to(handphone,.5,{x:-400,y:0, ease:Power4.easeOut})
+        //hide people
+        .to(people,.2,{autoAlpha:0},"groups")
         //scene1
-        //scene2
-        .to($("body"),.5,{backgroundColor:red},"+=2")
-        //scene3
-        .to($("body"),.5,{backgroundColor:orange, onComplete:function(){
-            play('groups')
-        } },"+=2")
-        .addPause()
-    .add('organize')
-        .to(handphone,.5,{x:"-100",scale:1.3,ease:Power4.easeOut});
+        .add("group1")
+        .to(body,.5,{backgroundColor:dark},"group1")
+        .to(phoneBlur, 0.6,{attr:{stdDeviation:0}},"group1")
+        .to(handphone,.5,{x:-400,y:0, ease:Power4.easeOut})
+        
+        .add("group2")
+        .to(pointhand,.5,{x:0,y:0, ease:Power4.easeOut},"group2")
+        .to(body,.5,{backgroundColor:red},"group2")
+        .to(pointhand,.5,{x:200,y:300, ease:Power4.easeOut})
 
-//TweenLite.set(wholeMovie,{timeScale: 0})
+        .add("group3")
+        .to(pointhand,.5,{x:0,y:0, ease:Power4.easeOut},"group3")
+        .to(body,.5,{backgroundColor:orange},"group3")
+        .to(pointhand,1,{x:200,y:300, ease:Power4.easeOut})
+    .add('organize')
+        .to(body,.5,{backgroundColor:blue},"organize")
+        .to(handphone,.5,{x:"-100", y: 0, scale:1.3,ease:Power4.easeOut},"organize")
+    .add('share')
+        .to($("body"),.5,{backgroundColor:green})
+        .to(handphone,.5,{x:0,y:800,scale:1,ease:Power4.easeOut})
+    .add('download')
+        .to($("body"),.5,{backgroundColor:dark})
+        .to(footer,.5,{bottom:"50vh",textAlign:"center",left:0})
+        .to($("footer img"),.5,{scale:1.5,display:"inline-block",margin:"36px"},"-=.5")
+    .add('end');
 
 
 //hide people at first
 TweenMax.set(person,{autoAlpha:0})
-
-//move hand out
-TweenMax.set(pointhand,{x:1000,y:1000})
 
 //**********
 //transition functions:
@@ -153,37 +213,35 @@ $(document).ready(function() {
 
         //events
         onLeave: function(index, nextIndex, direction){
-            console.log("+++++++++++++++++++")
-            console.log("leaving: " + index)
+            nxtIndx = nextIndex
+            // console.log("+++++++++++++++++++")
+            // console.log("leaving: " + index)
+            // $("#header a:first-child").text(nextIndex + 
+            //     ": " + wholeMovie.currentLabel())
              if (nextIndex == 1) {
 
-                if (index == 2) {
-                    //if I'm coming from 2
-                    wholeMovie.reverse()
-                } else {
-                    // otherwise i must be coming from start
-                    wholeMovie.play('intro')
-                }
-                showPeople()
+             
+                wholeMovie.tweenFromTo("intro","ease")
+               showPeople()
                 
             } else if (nextIndex == 2) {
-                if (index == 3) {
-                    //if I'm coming from 3
-                    wholeMovie.reverse()
-                } else {
-                    //anywhere else I'm coming from
-                    wholeMovie.play('ease')
-                }
-                showPeople()
+
+                wholeMovie.tweenFromTo("ease","groups")
+               showPeople()
               
-                //show the people
-                TweenMax.staggerTo(person,.2,{autoAlpha: 1},.1)
+         
  
             } else if (nextIndex == 3) {
                 hidePeople()
-                wholeMovie.play('groups')
+                wholeMovie.tweenFromTo("groups","organize")
             } else if (nextIndex == 4) {
-                wholeMovie.play('organize')
+                wholeMovie.tweenFromTo("organize","share")
+            } else if (nextIndex == 5) {
+                  wholeMovie.tweenFromTo("share","download")
+
+            } else if(nextIndex == 6) {
+                  wholeMovie.tweenFromTo("download","end")
+
             }
 
         },
@@ -208,3 +266,8 @@ $(document).ready(function() {
         onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){}
     });
 });
+
+var getCurrentLabel = function(){
+    crntLbl = wholeMovie.currentLabel()
+    $("#header a").text(nxtIndx + ":" +crntLbl)
+}
