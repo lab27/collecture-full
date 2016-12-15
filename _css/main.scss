@@ -98,34 +98,42 @@ body {
     padding: 24px;
 }
 
-body.fp-viewing-one {
-    background: $blue;
-}
+// body.fp-viewing-one {
+//     background: $blue;
+// }
 
-body.fp-viewing-two {
-    background: $blue;
-}
+// body.fp-viewing-two {
+//     background: $blue;
+// }
 
-body.fp-viewing-three {
-    background: $dark;
-}
+// body.fp-viewing-three {
+//     background: $dark;
+// }
 
-body.fp-viewing-four {
-    background: $blue;
-}
+// body.fp-viewing-four {
+//     background: $blue;
+// }
 
-body.fp-viewing-five {
-    background: $green;
-}
+// body.fp-viewing-five {
+//     background: $green;
+// }
 
 
 // SVGS
-#people-root {
+#people-root, #handphone-root {
   position:absolute;
   top:0;
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+#handphone-root {
+  width: 80vw;
+  bottom: 0;
+  left: 50vw;
+  margin-left: -40vw;
+  top: 25vh;
 }
 footer {
 	position: absolute;

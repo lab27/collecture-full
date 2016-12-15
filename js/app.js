@@ -1,18 +1,93 @@
-//=require jquery/dist/jquery.js
-//=include fullpage.js/dist/jquery.fullpage.js 
 
 
-TweenMax.staggerFrom('.callout',.5,{opacity:0, marginTop: 100},.2);
+//SVG vars
+var peopleBlur = document.getElementById('blurAmt');
+var phoneBlur = document.getElementById('phoneBlurAmt');
+var people = $("#people")
+var person = $("g[data-name='person']");
+var pointhand = $("#point-hand")
+var handphone = $("#handphone")
 
-var tl = new TimelineLite()
+//Colors
+var blue = "#39beca",
+    green = "#4bddad",
+    dark= "#353F50",
+    gray= "#c3cbd5",
+    lightGray= "#f4f9fa",
+    orange= "#c9a03a",
+    red= "#4d4a49";
 
-$('.callout').on('click', function(){
-	tl.to(this,.1,{borderTopWidth:10, borderBottomWidth:10, borderColor: "#900"})
-	.to(this,.2,{color: "rgba(0,0,0,0)", backgroundColor: "#f00"},"-=.2")
-	.to(this,.3,{opacity:0,height:0,ease: Back.easeIn, onComplete: function(){
-		(this.target).remove()
-	}});
-});
+//Initial sets:
+
+//Whole Timeline:
+var wholeMovie = new TimelineMax();
+
+wholeMovie.add('intro')
+        //bgColor
+        .to($("body"),.5,{backgroundColor:blue},"+=2")
+        
+        //hand down
+        .to(pointhand,.5,{y:500, x:500,autoAlpha:0})
+        //phone up
+        .to(handphone,1,{y:0, x:0, ease:Power4.easeOut})
+        //blur the people
+        .to(peopleBlur, 0.6,{attr:{stdDeviation:10}})
+                //hide the people
+        .staggerTo(person,.2,{autoAlpha: 0},.1)
+        .addPause()
+    .add('ease')
+        // bgColor:
+        .to($("body"),.5,{backgroundColor:blue},"+=2")
+        .to(pointhand,.2,{autoAlpha:1})
+        .to(pointhand,.5,{y:0, x:0, ease:Power4.easeInOutCubic})
+        .to(pointhand,1.5,{y:500,x:500, ease:Power4.easeOut},"+=.2")
+        .to(pointhand,.2,{autoAlpha:0})
+        .to(handphone,.5,{y:500,x:0,  ease:Power4.easeOut},"-=.5")
+        //unblur the people
+        .to(peopleBlur, 0.6,{attr:{stdDeviation:0}},"-=1")
+        //blur the phone
+        .to(phoneBlur, 0.6,{attr:{stdDeviation:5}},"-=1")
+        .addPause()
+    .add('groups')
+        .to($("body"),.5,{backgroundColor:dark})
+        .to(phoneBlur, 0.6,{attr:{stdDeviation:0}})
+        .to(handphone,.5,{x:-400,y:0, ease:Power4.easeOut})
+        //scene1
+        //scene2
+        .to($("body"),.5,{backgroundColor:red},"+=2")
+        //scene3
+        .to($("body"),.5,{backgroundColor:orange, onComplete:function(){
+            play('groups')
+        } },"+=2")
+        .addPause()
+    .add('organize')
+        .to(handphone,.5,{x:"-100",scale:1.3,ease:Power4.easeOut});
+
+//TweenLite.set(wholeMovie,{timeScale: 0})
+
+
+//hide people at first
+TweenMax.set(person,{autoAlpha:0})
+
+//move hand out
+TweenMax.set(pointhand,{x:1000,y:1000})
+
+//**********
+//transition functions:
+//************
+
+//show people
+var showPeople = function(){
+    TweenMax.to(people,.2,{autoAlpha: 1})
+}
+
+//hide people
+var hidePeople = function(){
+    TweenMax.to(people,.2,{autoAlpha: 0})
+}
+
+
+//******************
 
 
 $(document).ready(function() {
@@ -80,15 +155,49 @@ $(document).ready(function() {
         onLeave: function(index, nextIndex, direction){
             console.log("+++++++++++++++++++")
             console.log("leaving: " + index)
+             if (nextIndex == 1) {
+
+                if (index == 2) {
+                    //if I'm coming from 2
+                    wholeMovie.reverse()
+                } else {
+                    // otherwise i must be coming from start
+                    wholeMovie.play('intro')
+                }
+                showPeople()
+                
+            } else if (nextIndex == 2) {
+                if (index == 3) {
+                    //if I'm coming from 3
+                    wholeMovie.reverse()
+                } else {
+                    //anywhere else I'm coming from
+                    wholeMovie.play('ease')
+                }
+                showPeople()
+              
+                //show the people
+                TweenMax.staggerTo(person,.2,{autoAlpha: 1},.1)
+ 
+            } else if (nextIndex == 3) {
+                hidePeople()
+                wholeMovie.play('groups')
+            } else if (nextIndex == 4) {
+                wholeMovie.play('organize')
+            }
+
         },
         afterLoad: function(anchorLink, index){
             console.log("+++++++++++++++++++")
             console.log("just loaded: " + anchorLink)
+
+
         },
         afterRender: function(){
             console.log("+++++++++++++++++++")
             console.log("just rendered")
             $('#fullpage').css('display','block')
+            $('#people-root').css('display','block')
         },
         afterResize: function(){
         console.log("+++++++++++++++++++")

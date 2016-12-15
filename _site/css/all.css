@@ -315,27 +315,19 @@ body {
   text-align: center;
   padding: 24px; }
 
-body.fp-viewing-one {
-  background: #39beca; }
-
-body.fp-viewing-two {
-  background: #39beca; }
-
-body.fp-viewing-three {
-  background: #353F50; }
-
-body.fp-viewing-four {
-  background: #39beca; }
-
-body.fp-viewing-five {
-  background: #4bddad; }
-
-#people-root {
+#people-root, #handphone-root {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0; }
+
+#handphone-root {
+  width: 80vw;
+  bottom: 0;
+  left: 50vw;
+  margin-left: -40vw;
+  top: 25vh; }
 
 footer {
   position: absolute;
