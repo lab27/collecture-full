@@ -78,15 +78,13 @@ wholeMovie.add('intro')
         //hide the people
         .staggerTo(person,.2,{autoAlpha: 0},.1)
         // .addPause()
-    .add('ease')
+    .add('easy')
         // bgColor:
         .to(body,.5,{backgroundColor:blue})
         //show the people
         .staggerTo(person,.2,{autoAlpha: 1},.1)
-        //pointer visible
-        //.to(pointhand,.2,{autoAlpha:1},"-=.2")
         //pointer to zero
-        .to(pointhand,.5,{x:0, y:0, ease:Power4.easeInOutCubic})
+        .to(pointhand,.5,{x:0, y:0, ease:Power4.easeInOutCubic},"-=.3")
         //pointer stays, then goes back down
         .to(pointhand,1,{x:500,y:500, ease:Power4.easeOut},"+=.2")
         //pointer invisible:
@@ -117,13 +115,13 @@ wholeMovie.add('intro')
         .to(body,.5,{backgroundColor:orange},"group3")
         .to(pointhand,1,{x:200,y:300, ease:Power4.easeOut})
     .add('organize')
-        .to(body,.5,{backgroundColor:blue},"organize")
+        .to(body,.5,{backgroundColor:green},"organize")
         .to(handphone,.5,{x:"-100", y: 0, scale:1.3,ease:Power4.easeOut},"organize")
     .add('share')
-        .to($("body"),.5,{backgroundColor:green})
+        .to($("body"),.5,{backgroundColor:dark})
         .to(handphone,.5,{x:0,y:800,scale:1,ease:Power4.easeOut})
     .add('download')
-        .to($("body"),.5,{backgroundColor:dark})
+        .to($("body"),.5,{backgroundColor:blue})
         .to(footer,.5,{bottom:"50vh",textAlign:"center",left:0})
         .to($("footer img"),.5,{scale:1.5,display:"inline-block",margin:"36px"},"-=.5")
     .add('end');
@@ -221,12 +219,12 @@ $(document).ready(function() {
              if (nextIndex == 1) {
 
              
-                wholeMovie.tweenFromTo("intro","ease")
+                wholeMovie.tweenFromTo("intro","easy")
                showPeople()
                 
             } else if (nextIndex == 2) {
 
-                wholeMovie.tweenFromTo("ease","groups")
+                wholeMovie.tweenFromTo("easy","groups")
                showPeople()
               
          
