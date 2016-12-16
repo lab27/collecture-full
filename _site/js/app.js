@@ -63,12 +63,11 @@ var tmax_options = {
   onRepeatParams: []
 };
 
-//Whole Timeline:
-var wholeMovie = new TimelineMax(tmax_options);
 
-wholeMovie.add('intro')
-        //bgColor
-        .to($("body"),.5,{backgroundColor:blue})
+
+function intro() {
+    var tl = new TimelineMax();
+    tl.to($("body"),.5,{backgroundColor:blue})
         //phone up
         .to(handphone,1,{x:0, y:0, ease:Power4.easeOut})
         //hand down
@@ -77,10 +76,15 @@ wholeMovie.add('intro')
         .to(peopleBlur, 0.6,{attr:{stdDeviation:10}})
         //hide the people
         .staggerTo(person,.2,{autoAlpha: 0},.1)
-        // .addPause()
-    .add('easy')
-        // bgColor:
-        .to(body,.5,{backgroundColor:blue})
+        .addPause();
+
+        return tl;
+}
+
+function easy(){
+    var tl = new TimelineMax();
+
+    tl.to(body,.5,{backgroundColor:blue})
         //show the people
         .staggerTo(person,.2,{autoAlpha: 1},.1)
         //pointer to zero
@@ -95,9 +99,14 @@ wholeMovie.add('intro')
         .to(phoneBlur, 0.6,{attr:{stdDeviation:6}})
         //hand/phone down:
         .to(handphone,.7,{x:0, y:500, ease:Power4.easeInOutCubic},"-=1")
-        // .addPause()
-    .add('groups')
-        //hide people
+        .addPause();
+
+        return tl;
+}
+
+function groups(){
+    var tl = new TimelineMax();
+    tl//hide people
         .to(people,.2,{autoAlpha:0},"groups")
         //scene1
         .add("group1")
@@ -114,18 +123,56 @@ wholeMovie.add('intro')
         .to(pointhand,.5,{x:0,y:0, ease:Power4.easeOut},"group3")
         .to(body,.5,{backgroundColor:orange},"group3")
         .to(pointhand,1,{x:200,y:300, ease:Power4.easeOut})
-    .add('organize')
-        .to(body,.5,{backgroundColor:green},"organize")
+         .addPause();
+
+        return tl;
+}
+
+function organize(){
+    var tl = new TimelineMax();
+    tl
+    .to(body,.5,{backgroundColor:green},"organize")
         .to(handphone,.5,{x:"-100", y: 0, scale:1.3,ease:Power4.easeOut},"organize")
-    .add('share')
-        .to($("body"),.5,{backgroundColor:dark})
-        .to(handphone,.5,{x:0,y:800,scale:1,ease:Power4.easeOut})
-    .add('download')
-        .to($("body"),.5,{backgroundColor:blue})
+         .addPause();
+
+        return tl;
+}
+
+function share(){
+    var tl = new TimelineMax();
+    tl
+    .to($("body"),.5,{backgroundColor:dark})
+    .to(handphone,.5,{x:0,y:800,scale:1,ease:Power4.easeOut})
+     .addPause();
+
+        return tl;
+}
+   
+  
+function download(){
+    var tl = new TimelineMax();
+    tl
+   .to($("body"),.5,{backgroundColor:blue})
         .to(footer,.5,{bottom:"50vh",textAlign:"center",left:0})
         .to($("footer img"),.5,{scale:1.5,display:"inline-block",margin:"36px"},"-=.5")
-    .add('end');
+         .addPause();
 
+        return tl;
+}
+   
+   
+
+
+//Whole Timeline:
+var wholeMovie = new TimelineMax();
+wholeMovie.pause();
+
+wholeMovie.add(intro, "intro");
+wholeMovie.add(easy, "easy");
+wholeMovie.add(groups, "groups");
+wholeMovie.add(organize, "organize");
+wholeMovie.add(share, "share");
+wholeMovie.add(download, "download");
 
 //hide people at first
 TweenMax.set(person,{autoAlpha:0})
@@ -219,26 +266,26 @@ $(document).ready(function() {
              if (nextIndex == 1) {
 
              
-                wholeMovie.tweenFromTo("intro","easy")
+                wholeMovie.seek("intro")
                showPeople()
                 
             } else if (nextIndex == 2) {
 
-                wholeMovie.tweenFromTo("easy","groups")
-               showPeople()
+                 wholeMovie.seek("easy")               
+                 showPeople()
               
          
  
             } else if (nextIndex == 3) {
                 hidePeople()
-                wholeMovie.tweenFromTo("groups","organize")
+                 wholeMovie.play("groups")
             } else if (nextIndex == 4) {
-                wholeMovie.tweenFromTo("organize","share")
+                 wholeMovie.play("organize")
             } else if (nextIndex == 5) {
-                  wholeMovie.tweenFromTo("share","download")
+                 wholeMovie.play("share")
 
             } else if(nextIndex == 6) {
-                  wholeMovie.tweenFromTo("download","end")
+                 wholeMovie.play("download")
 
             }
 
