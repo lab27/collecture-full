@@ -1,0 +1,34 @@
+ <div id="tophalf">
+  <div id="record-holder">
+    <button id="record-btn">
+    {% include svg_icon.svg name="pause" %}
+    </button>
+    
+    <label id="record-label" for="record-btn">record</label>
+  </div>
+  <div id="done">done</div>
+  <div id="settings-toggle">{% include settings.svg %}</div>
+  <div id="sync-settings">{% include cloud.svg %}<span class="sync-count">3</span></div>
+</div>
+<div id="bottomhalf">
+  <div id="screen1" >
+    <div class="header">
+      <h4 class="text-center">Collections</h4>
+      <div class="add-group float-right">+</div>
+    </div>
+    <ul class="menu vertical" id="collections">
+      {% for collection in site.data.collections  %}
+        <li class="collection {{collection.privacy}}" id="collection{{forloop.index}}">
+          {% include folder.svg %}
+          <span class="talk-count">{{collection.count}}</span>
+
+          <span class="name">{{collection.name}}</span>
+          {% if collection.privacy == "private" %}
+          <span class="lock-icon">{% include lock.svg %}</span>
+          {% endif %}
+          <span class="drill-arrow float-right">></span>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+ </div>

@@ -1,0 +1,765 @@
+$system-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+
+@mixin small-round-button($bg-color, $color) {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background: $bg-color;
+    color: $color;
+    font-family: $system-font-family;
+    line-height: 28px;
+    font-weight: 200;
+    font-size: 30px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: $gray;
+}
+
+::-moz-placeholder {
+    /* Firefox 19+ */
+    color: $gray;
+}
+
+:-ms-input-placeholder {
+    /* IE 10+ */
+    color: $gray;
+}
+
+:-moz-placeholder {
+    /* Firefox 18- */
+    color: $gray;
+}
+
+html, body {
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    overflow: hidden;
+    position: fixed;
+    color: $dark;
+}
+
+.no-pad {
+    padding: 0 !important;
+}
+
+.fine-print {
+    font-size: .7rem;
+    opacity: .7;
+}
+
+#tophalf {
+    width: 100%;
+    height: 30%;
+    background: #fff;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    display: -ms-flexbox;
+    display: flex;
+    transition: background .2s;
+}
+
+#settings-toggle {
+    color: $gray;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    cursor: pointer;
+
+    svg {
+        fill: currentColor;
+        width: 18px;
+        height: 18px;
+    }
+}
+
+#sync-settings {
+    color: $blue;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+
+    .sync-count {
+        color: white;
+        font-size: 8px;
+        display: block;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        text-align: center;
+        margin-top: 6px;
+    }
+
+    svg {
+        fill: currentColor;
+        width: 21px;
+        height: 21px;
+    }
+}
+
+#tophalf.recording {
+    background: $green;
+
+    #record-btn {
+        background: white;
+    }
+
+    label {
+        color: white;
+    }
+
+    #settings-toggle {
+        svg {
+            fill: white;
+            opacity: .5;
+        }
+    }
+}
+
+#record-holder {
+    position: relative;
+
+    label {
+        text-align: center;
+
+        /* letter-spacing: 0.0625em;*/
+        color: $green;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 30px;
+    }
+
+    svg {
+        /* position: absolute;*/
+        fill: $green;
+        width: 24px;
+        height: 21px;
+
+        /* left: 50%;*/
+        /* border: 0;*/
+        /* margin-left: -12px;*/
+        /* top: 50%;*/
+        margin-top: 5px;
+        pointer-events: none;
+    }
+}
+
+#record-btn {
+    width: 60px;
+    height: 60px;
+    background: $green;
+    border-radius: 40px;
+
+    /* border:5px solid #ddd;*/
+    position: relative;
+    cursor: pointer;
+
+    /* display: -ms-flexbox;*/
+    /* display: flex;*/
+    /* -ms-flex-pack: center;*/
+    /* justify-content: center;*/
+    /* -ms-flex-align: center;*/
+    /* align-items: center;*/
+}
+
+#bottomhalf {
+    width: 300%;
+    height: 70%;
+    background: #eee;
+    font-size: 18px;
+    overflow-y: scroll;
+    position: fixed;
+
+    /* padding-top: 48px;*/
+}
+
+#done {
+    position: absolute;
+    left: 70%;
+    top: 14%;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-top: -20px;
+    color: $green;
+    letter-spacing: rem-calc(1);
+}
+
+#back-arrow, #talk-back-arrow {
+    cursor: pointer;
+    position: absolute;
+    top: 16px;
+}
+
+.header {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: rem-calc(21);
+    padding: 18px 24px 12px 24px;
+    position: fixed;
+    top: 30%;
+    width: 100%;
+    background: $dark;
+    color: white;
+    max-height: 60px;
+    z-index: 999;
+
+    h4 {
+        margin: 0;
+        font-size: .9rem;
+        letter-spacing: .1rem;
+        line-height: 1.5rem;
+    }
+
+    .add-group {
+        background: rgba(white, 0.2);
+        width: 36px;
+        height: 36px;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -ms-flex-align: center;
+        align-items: center;
+        border-radius: 18px;
+        font-size: 24px;
+        font-weight: 300;
+        font-family: $system-font-family;
+        margin: 0;
+        position: absolute;
+        box-shadow: 0 1px 1px rgba(black, 0.5);
+        top: 9px;
+        right: 12px;
+        color: $gray;
+        padding-bottom: 2px;
+    }
+}
+
+#screen1 {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 70%;
+    overflow-y: scroll;
+    padding-top: 56px;
+    background: $light-gray;
+}
+
+#screen2 {
+    position: absolute;
+    width: 100%;
+    height: 70%;
+    top: 0;
+    left: 100%;
+    padding-top: 84px;
+    background: $light-gray;
+    overflow-y: scroll;
+
+    .playlist-play {
+        text-align: center;
+        padding: 6px 0;
+        position: fixed;
+        left: 50%;
+        margin-left: -12px;
+        margin-top: -36px;
+
+        svg {
+            fill: $blue;
+            width: 24px;
+            height: 24px;
+            marign: 0 auto;
+        }
+    }
+}
+
+#talk-actions {
+    width: 80%;
+    height: 80%;
+    left: 50%;
+    margin-left: -40%;
+    background: white;
+    border-radius: 20px;
+    position: fixed;
+    padding: 12px;
+    box-shadow: 0 2px 10px rgba(black, 0.4);
+    z-index: 999;
+    padding-bottom: 24px;
+    margin-top: 24px;
+
+    .button {
+        margin: 0;
+        margin-bottom: 6px;
+        border-radius: 4px;
+    }
+
+    .content2 {
+        color: white;
+        padding: 12px;
+
+        .button.white {
+            border-color: white;
+            color: white;
+            margin-right: 6px;
+        }
+    }
+}
+
+#talk-actions-container {
+    position: fixed;
+    background: rgba(black, 0.1);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+#talk-panel-holder {
+    position: fixed;
+    overflow: hidden;
+}
+
+#screen3 {
+    text-align: center;
+    position: absolute;
+    height: 70%;
+    background: $light-gray;
+    color: $dark;
+    width: 100%;
+    top: 0;
+    padding-top: 68px;
+    left: 200%;
+
+    /* padding: 12px;*/
+    box-shadow: 0 -1px 20px rgba(0, 0, 0, 0.3);
+
+    .select-icon-holder {
+        height: 2rem;
+        background: $gray;
+        border-top-left-radius: 1rem;
+        border-bottom-left-radius: 1rem;
+        text-align: left;
+
+        /* margin-right: -1px;*/
+
+        svg {
+            width: 18px;
+            height: 18px;
+            fill: $light-gray;
+            margin-top: 6px;
+            margin-left: 12px;
+        }
+    }
+
+    select {
+        height: 2rem;
+        background-color: $gray;
+        border: none;
+        border-top-right-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+        color: white;
+        padding-left: 0px;
+        font-size: 12px;
+
+        // @include background-triangle(white);
+   
+    }
+
+    #description {
+        font-size: .8rem;
+
+        &.empty {
+            color: $gray;
+            font-family: $system-font-family;
+            font-style: italic;
+        }
+    }
+}
+
+#description-editor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: $light-gray;
+    z-index: 9999;
+}
+
+#description-editor-button {
+    position: absolute;
+    bottom: 50%;
+    left: 24px;
+    background: $green;
+    border-radius: 4px;
+    margin: 0;
+}
+
+.talk-panel-top-buttons {
+    /* padding: 0 12px;*/
+
+    .close-btn {
+        @include small-round-button($gray, white);
+    }
+
+    svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    font-size: 36px;
+}
+
+#share-btn {
+    @include small-round-button($blue, white);
+
+    font-size: 16px;
+    position: absolute;
+    right: 12px;
+    top: 14px;
+    letter-spacing: -.05rem;
+}
+
+#talk-title {
+    font-size: 24px;
+    margin-top: 12px;
+    margin-bottom: 0;
+    line-height: 24px;
+}
+
+#talk-date {
+    margin-bottom: 12px;
+    color: rgba($dark, 0.4);
+    font-weight: 300;
+    font-family: $system-font-family;
+    font-size: 12px;
+}
+
+#player {
+    bottom: 24px;
+    position: absolute;
+
+    /* width: 100%; */
+    left: 12px;
+    right: 12px;
+
+    #track {
+        width: 100%;
+        height: 3px;
+        background: $gray;
+        border-radius: 1.5px;
+    }
+
+    #playhead {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        border-radius: 12px;
+        background: $dark;
+        margin-top: -13px;
+    }
+
+    #timing {
+        margin-top: 12px;
+        font-family: $system-font-family;
+        color: rgba($dark, 0.5);
+        font-size: 12px;
+    }
+}
+
+#play-btn svg {
+    width: 24px;
+    height: 24px;
+    margin: 0 auto;
+    fill: $dark;
+
+    /* position: absolute;*/
+    /* bottom: 24px;*/
+}
+
+.pulse {
+    animation-duration: 5s;
+    animation-name: pulse;
+    animation-iteration-count: infinite;
+    animation-direction: loop;
+    animation-timing-function: linear;
+}
+
+.flash-green {
+    animation-duration: 1s;
+    animation-name: flash-green;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-timing-function: ease-out;
+}
+
+.will-grow {
+    transition: 500ms transform cubic-bezier(0.7, 0.3, 0, 1);
+    transform: scaleY(0);
+    will-change: transform;
+}
+
+.grow {
+    transform: scaleY(1);
+}
+
+@keyframes pulse {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes flash-green {
+    0% {
+        background: rgba(white, 0.8);
+    }
+
+    50% {
+        background: $green;
+    }
+
+    100% {
+        background: rgba(white, 0.8);
+    }
+}
+
+#collections {
+    padding: 12px;
+
+    /* background: $dark;*/
+    overflow-y: scroll;
+}
+
+li.collection, li.recording {
+    color: rgba($dark, 0.5);
+    background: rgba(white, 0.8);
+    padding: 16px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+    box-shadow: 0 1px 3px rgba(black, 0.2);
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-top: 20px;
+    cursor: pointer;
+    font-size: .9rem;
+
+    &.private {
+        border: 1px solid $green;
+    }
+
+    .name {
+        margin-left: 6px;
+    }
+
+    .talk-count {
+        /* border: 1px solid yellow;*/
+        font-size: .6rem;
+        font-family: $system-font-family;
+        font-weight: 500;
+        color: white;
+        margin-left: -35px;
+        vertical-align: text-bottom;
+        width: 24px;
+        max-width: 24px;
+        text-align: center;
+        display: inline-block;
+        padding-bottom: 2px;
+    }
+
+    svg {
+        width: 24px;
+        height: 24px;
+        fill: $gray;
+        vertical-align: middle;
+        margin-top: -7px;
+        margin-right: 7px;
+    }
+
+    .lock-icon {
+        color: $green;
+        display: inline-block;
+        vertical-align: text-top;
+        line-height: 0;
+
+        svg {
+            margin: 0;
+            width: 12px;
+            height: 12px;
+            fill: currentColor;
+            padding: 0;
+        }
+    }
+}
+
+li.recording {
+    background: none;
+    box-shadow: none;
+    padding: 12px;
+    font-size: .9rem;
+
+    svg {
+        fill: currentColor;
+    }
+}
+
+#setting-toggle {
+    cursor: pointer;
+}
+
+#settings-modal, #sync-modal {
+    margin: 0;
+    padding: 24px;
+    background: $light-gray;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    min-height: 100%;
+    z-index: 1000;
+    position: absolute;
+    top: 0;
+    padding-top: 36px;
+    text-align: center;
+
+    h3 {
+        text-transform: uppercase;
+        font-size: .9rem;
+        letter-spacing: .1rem;
+    }
+
+    ul {
+        margin-top: 36px;
+    }
+
+    ul li {
+        padding: 12px 0;
+        border-top: 1px solid rgba($dark, 0.1);
+
+        .switch {
+            margin-top: -2px;
+        }
+    }
+
+    .fine-print {
+        padding-top: 36px;
+        border-top: 1px solid rgba($dark, 0.1);
+    }
+
+    .upload-progress {
+        color: $green;
+    }
+
+    .upload-queued {
+        opacity: .3;
+    }
+
+    #helptext {
+        max-width: 45em;
+        margin: 0 auto;
+        text-align: left;
+        color: $dark;
+
+        p {
+            color: $dark;
+        }
+    }
+}
+
+#close-settings, #close-sync {
+    width: 36px;
+    height: 36px;
+    background: white;
+    font-size: 36px;
+    border-radius: 22px;
+    box-shadow: 0 1px 2px rgba(18, 18, 20, 0.3);
+    font-weight: 200;
+    padding: 0;
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+
+    span {
+        margin-top: -4px;
+
+        /* width: 100%;*/
+        /* height: 100%;*/
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        font-weight: 300;
+        font-family: $system-font-family;
+
+        /* display: block;*/
+        /* margin-left: 2px;*/
+        /* font-size: 50px;*/
+    }
+}
+
+#new-group-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+
+    svg {
+        fill: $gray;
+        width: 21px;
+        height: 22px;
+        vertical-align: middle;
+    }
+
+    input {
+        border: none;
+        box-shadow: none;
+
+        /* font-size: 16px;*/
+    }
+
+    .top-bar {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-align: center;
+        align-items: center;
+        padding: 12px;
+        background: $dark;
+        color: white;
+
+        button {
+            margin: 0;
+            padding-top: 10px;
+        }
+
+        p {
+            font-size: 12px;
+            margin: 0;
+        }
+    }
+}
+
+.button-group .button:not(:last-child) {
+    border-right: none;
+}

@@ -1,5 +1,13 @@
 /*=include ../node_modules/reset-css/reset.css*/
 /*=include ../node_modules/fullpage.js/dist/jquery.fullpage.css*/
+$blue: #39beca;
+$green: #4bddad;
+$dark: #353F50;
+$gray: #c3cbd5;
+$light-gray: #f4f9fa;
+$orange: #c9a03a;
+$red: #4d4a49;
+@import "ui";
 
 * {
 	box-sizing: border-box;
@@ -81,13 +89,7 @@
   font-style: normal;
 }
 
-$blue: #39beca;
-$green: #4bddad;
-$dark: #353F50;
-$gray: #c3cbd5;
-$light-gray: #f4f9fa;
-$orange: #c9a03a;
-$red: #4d4a49;
+
 
 body {
 	background: $blue;

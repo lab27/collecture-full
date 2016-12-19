@@ -10,7 +10,6 @@ var footer = $("footer")
 var crntAnchor = ""
 var crntLbl = ""
 var nxtIndx = ""
-var groupsRepeater = 0
 
 //Colors
 var blue = "#39beca",
@@ -23,12 +22,8 @@ var blue = "#39beca",
 
 //helpers
 
-var groupsAgain = function(){
-  console.log("called groupsAgain")
-  if (crntAnchor == "Groups" && groupsRepeater < 3){
-    tl_groups.tweenFromTo("group1","groupsEnd")
-  }
-  groupsRepeater +=1;
+var getCurrentAnchor = function(anchor){
+    crntAnchor = anchor
 }
 
 //Initial sets:
@@ -50,8 +45,6 @@ var tmax_options = {
   useFrames: false,
   onStart: function() {
     console.log('on start called');
-    getCurrentLabel()
-    //showNextMsg();
   },
   onStartScope: {},
   onUpdate: function() {
@@ -86,7 +79,13 @@ var tmax_options = {
 var tl_intro = new TimelineMax(tmax_options);
 tl_intro
   .add("introStart")
+  .set($("#UI1"),{autoAlpha:1})
   .to($("body"),.5,{backgroundColor:blue},"introStart")
+  //topbg colors
+  .to($("#topBG"),.2,{fill:"white"},"-=.1")
+  .to($("#record-btn"),.2,{fill:green},"-=.1")
+  .set($("#record-text tspan"),{text:"record"})
+  .to($("#record-text"),.2,{fill:green},"-=.1")
   //phone up and normal size
   .to(handphone,1,{x:0, y:0, scale: 1, ease:Power4.easeOut},"introStart")
   //unblur
@@ -103,6 +102,7 @@ tl_intro
 var tl_easy = new TimelineMax(tmax_options);
 tl_easy
   .add("easyStart")
+  .set($("#UI1"),{autoAlpha:1})
   .to(people,.2,{autoAlpha: 1},"easyStart")
   .to(body,.5,{backgroundColor:blue},"easyStart")
   //phone to center
@@ -110,11 +110,17 @@ tl_easy
   //show the people
   .staggerTo(person,.2,{autoAlpha: 1},.1)
   //pointer to zero
-  .to(pointhand,.5,{x:0, y:0, ease:Power4.easeInOutCubic},"-=.3")
+  .to(pointhand,.5,{x:0, y:-65, ease:Power4.easeInOutCubic},"easyStart+=1")
   //pointer stays, then goes back down
   .to(pointhand,1,{x:500,y:500, ease:Power4.easeOut},"+=.2")
-  //pointer invisible:
-  //.to(pointhand,.2,{autoAlpha:0})
+  //topbg green
+  .to($("#topBG"),.2,{fill:green},"easyStart+=1.6")
+  .to($("#record-btn"),.2,{fill:"white"},"easyStart+=1.6")
+  .set($("#record-text tspan"),{text:"00:00"},"easyStart+=1.6")
+  .to($("#record-text"),.2,{fill:"white"},"easyStart+=1.6")
+  .to($("#record-text tspan"),1,{text:"00:01"})
+  .to($("#record-text tspan"),1,{text:"00:02"})
+  .to($("#record-text tspan"),1,{text:"00:03"})
   //unblur the people
   .to(peopleBlur, 0.6,{attr:{stdDeviation:0}})
   //blur the phone
@@ -127,6 +133,7 @@ tl_easy
 var tl_groups = new TimelineMax(tmax_options);
 tl_groups
   .add("groupsStart")
+  .set($("#UI1"),{autoAlpha:0})
   //setup:
   .to(people,.2,{autoAlpha:0},"groupsStart")
   .to(phoneBlur, 0.6,{attr:{stdDeviation:0}},"groupsStart")
@@ -277,7 +284,7 @@ $(document).ready(function() {
         afterLoad: function(anchorLink, index){
             console.log("+++++++++++++++++++")
             console.log("just loaded: " + index)
-            crntAnchor = anchorLink
+            getCurrentAnchor(anchorLink)
             // if (index == 1) {
             //   console.log("i'm at the beginning!")
             //   wholeMovie.tweenFromTo("introStart","introEnd")
@@ -290,10 +297,10 @@ $(document).ready(function() {
             console.log("just rendered")
             $('#fullpage').css('display','block')
             $('#people-root').css('display','block')
-            // if (nxtIndx == "") {
-            //   console.log("I must be at the beginning?")
-            //   tl_intro.tweenFromTo("introStart","introEnd")
-            // }
+            if (crntAnchor == "Intro") {
+              console.log("I must be at the beginning?")
+              tl_intro.tweenFromTo("introStart","introEnd")
+            }
         },
         afterResize: function(){
         console.log("+++++++++++++++++++")
@@ -305,7 +312,3 @@ $(document).ready(function() {
     });
 });
 
-var getCurrentLabel = function(){
-    //crntLbl = wholeMovie.currentLabel()
-    // $("#header a").text(nxtIndx + ":" +crntLbl)
-}

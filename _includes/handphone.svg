@@ -45,7 +45,60 @@
       <rect id="outline" class="cls-4" x="528.93" y="14.29" width="225.78" height="475.43" rx="31.82" ry="31.82"/>
       <circle id="home-btn" class="cls-5" cx="641.22" cy="462.77" r="18.47"/>
       <rect id="speaker" class="cls-5" x="622.69" y="38.16" width="36.81" height="3.68" rx="1.82" ry="1.82"/>
-      <rect id="UI-holder" class="cls-6" x="540" y="84.6" width="200" height="334.93"/>
+      <!-- <rect id="UI-holder" class="cls-6" x="540" y="84.6" width="200" height="334.93"/> -->
+      <!-- <foreignObject x="540" y="84.6" width="200" height="334.93"> -->
+           <g id="UI1">
+      <rect id="BG" x="540" y="84.6" width="200" height="334.93" style="fill: #f4f9fa"/>
+      <rect id="topBG" x="540" y="84.82" width="200" height="102" style="fill: #fff"/>
+      <rect id="bar" x="540" y="187" width="200" height="38" style="fill: #353f50"/>
+      <circle id="record-btn" cx="640" cy="126" r="19" style="fill: #4bddad"/>
+      <text id="record-text" transform="translate(623.33 157.16)" style="font-size: 12px;fill: #4bddad;"><tspan style="letter-spacing: -0.02001953125em">record</tspan></text>
+      <text transform="translate(589.82 208.94)" style="font-size: 9px;fill: #f4f9fa;letter-spacing: 0.05002170138888889em">PRI<tspan x="15.05" y="0" style="letter-spacing: -0.009982638888888888em">VA</tspan><tspan x="27.58" y="0">TE </tspan><tspan x="42.01" y="0" style="letter-spacing: 0.0400390625em">C</tspan><tspan x="48.81" y="0">OLL</tspan><tspan x="67.74" y="0" style="letter-spacing: 0.029947916666666668em">E</tspan><tspan x="73.14" y="0">CTION</tspan></text>
+      <polyline id="back" points="555 201.86 550 206.86 555 211.14" style="fill: none;stroke: #f4f9fa;stroke-miterlimit: 10;stroke-width: 2px"/>
+      <g id="listItem" style="opacity: 0.5">
+        <text transform="translate(575.96 256.94)" style="font-size: 9px;fill: #353f50;"><tspan style="letter-spacing: 0.05002170138888889em">Science</tspan><tspan x="35.16" y="0" style="letter-spacing: -0.00010850694444444444em"> </tspan><tspan x="37.59" y="0" style="letter-spacing: 0.05002170138888889em">101, </tspan><tspan x="57.21" y="0" style="letter-spacing: 0.030056423611111112em">L</tspan><tspan x="62.5" y="0" style="letter-spacing: 0.05002170138888889em">ectu</tspan><tspan x="82.45" y="0" style="letter-spacing: 0.030056423611111112em">r</tspan><tspan x="86.12" y="0" style="letter-spacing: 0.05002170138888889em">e</tspan><tspan x="91.64" y="0"> </tspan><tspan x="94.07" y="0" style="letter-spacing: 0.05002170138888889em">1</tspan></text>
+        <g id="Sound_wave_2" data-name="Sound wave 2">
+          <path d="M550.8,257.07a.8.8,0,0,1-.8-.8v-4a.8.8,0,0,1,1.61,0v4A.8.8,0,0,1,550.8,257.07Z" style="fill: #353f50"/>
+          <path d="M553.22,260.28a.8.8,0,0,1-.8-.8V249a.8.8,0,1,1,1.61,0v10.46A.8.8,0,0,1,553.22,260.28Z" style="fill: #353f50"/>
+          <path d="M555.63,263.5a.8.8,0,0,1-.8-.8V245.8a.8.8,0,1,1,1.61,0V262.7A.8.8,0,0,1,555.63,263.5Z" style="fill: #353f50"/>
+          <path d="M558,262.7a.8.8,0,0,1-.8-.8V246.61a.8.8,0,1,1,1.61,0v15.28A.8.8,0,0,1,558,262.7Z" style="fill: #353f50"/>
+          <path d="M560.46,259.48a.8.8,0,0,1-.8-.8v-8.85a.8.8,0,1,1,1.61,0v8.85A.8.8,0,0,1,560.46,259.48Z" style="fill: #353f50"/>
+          <path d="M562.87,262.7a.8.8,0,0,1-.8-.8V246.61a.8.8,0,1,1,1.61,0v15.28A.8.8,0,0,1,562.87,262.7Z" style="fill: #353f50"/>
+          <path d="M565.28,259.48a.8.8,0,0,1-.8-.8v-8.85a.8.8,0,1,1,1.61,0v8.85A.8.8,0,0,1,565.28,259.48Z" style="fill: #353f50"/>
+          <path d="M567.7,257.07a.8.8,0,0,1-.8-.8v-4a.8.8,0,0,1,1.61,0v4A.8.8,0,0,1,567.7,257.07Z" style="fill: #353f50"/>
+        </g>
+        <text transform="translate(725.31 256.08)" style="font-size: 9px;fill: #353f50;letter-spacing: 0.05002170138888889em">&gt;</text>
+      </g>
+      <g id="listItem-2" data-name="listItem" style="opacity: 0.5">
+        <text transform="translate(575.96 289.94)" style="font-size: 9px;fill: #353f50;letter-spacing: 0.05002170138888889em">Science<tspan x="35.16" y="0" style="letter-spacing: -0.00010850694444444444em"> </tspan><tspan x="37.59" y="0">101, </tspan><tspan x="57.21" y="0" style="letter-spacing: 0.030056423611111112em">L</tspan><tspan x="62.5" y="0">ectu</tspan><tspan x="82.45" y="0" style="letter-spacing: 0.030056423611111112em">r</tspan><tspan x="86.12" y="0">e</tspan><tspan x="91.64" y="0" style="letter-spacing: 0.030056423611111112em"> </tspan><tspan x="94.34" y="0">2</tspan></text>
+        <g id="Sound_wave_2-2" data-name="Sound wave 2">
+          <path d="M550.8,290.07a.8.8,0,0,1-.8-.8v-4a.8.8,0,0,1,1.61,0v4A.8.8,0,0,1,550.8,290.07Z" style="fill: #353f50"/>
+          <path d="M553.22,293.28a.8.8,0,0,1-.8-.8V282a.8.8,0,0,1,1.61,0v10.46A.8.8,0,0,1,553.22,293.28Z" style="fill: #353f50"/>
+          <path d="M555.63,296.5a.8.8,0,0,1-.8-.8V278.8a.8.8,0,0,1,1.61,0V295.7A.8.8,0,0,1,555.63,296.5Z" style="fill: #353f50"/>
+          <path d="M558,295.7a.8.8,0,0,1-.8-.8V279.61a.8.8,0,1,1,1.61,0v15.28A.8.8,0,0,1,558,295.7Z" style="fill: #353f50"/>
+          <path d="M560.46,292.48a.8.8,0,0,1-.8-.8v-8.85a.8.8,0,1,1,1.61,0v8.85A.8.8,0,0,1,560.46,292.48Z" style="fill: #353f50"/>
+          <path d="M562.87,295.7a.8.8,0,0,1-.8-.8V279.61a.8.8,0,1,1,1.61,0v15.28A.8.8,0,0,1,562.87,295.7Z" style="fill: #353f50"/>
+          <path d="M565.28,292.48a.8.8,0,0,1-.8-.8v-8.85a.8.8,0,1,1,1.61,0v8.85A.8.8,0,0,1,565.28,292.48Z" style="fill: #353f50"/>
+          <path d="M567.7,290.07a.8.8,0,0,1-.8-.8v-4a.8.8,0,0,1,1.61,0v4A.8.8,0,0,1,567.7,290.07Z" style="fill: #353f50"/>
+        </g>
+        <text transform="translate(725.31 289.08)" style="font-size: 9px;fill: #353f50;letter-spacing: 0.05002170138888889em">&gt;</text>
+      </g>
+      <g id="listItem-3" data-name="listItem" style="opacity: 0.5">
+        <text transform="translate(575.96 322.94)" style="font-size: 9px;fill: #353f50;letter-spacing: 0.05002170138888889em">N<tspan x="7.88" y="0" style="letter-spacing: 0.04503038194444445em">o</tspan><tspan x="13.5" y="0" style="letter-spacing: 0.03493923611111111em">t</tspan><tspan x="16.96" y="0">e</tspan><tspan x="22.48" y="0" style="letter-spacing: 0.019965277777777776em"> </tspan><tspan x="25.09" y="0" style="letter-spacing: -0.019965277777777776em">T</tspan><tspan x="30.44" y="0">o</tspan><tspan x="36.11" y="0" style="letter-spacing: 0.029947916666666668em"> </tspan><tspan x="38.81" y="0">Sel</tspan><tspan x="52.5" y="0" style="letter-spacing: 0.0400390625em">f</tspan><tspan x="55.84" y="0" style="letter-spacing: -0.00010850694444444444em"> </tspan><tspan x="58.27" y="0">1</tspan></text>
+        <g id="Sound_wave_2-3" data-name="Sound wave 2">
+          <path d="M550.8,323.07a.8.8,0,0,1-.8-.8v-4a.8.8,0,0,1,1.61,0v4A.8.8,0,0,1,550.8,323.07Z" style="fill: #353f50"/>
+          <path d="M553.22,326.28a.8.8,0,0,1-.8-.8V315a.8.8,0,0,1,1.61,0v10.46A.8.8,0,0,1,553.22,326.28Z" style="fill: #353f50"/>
+          <path d="M555.63,329.5a.8.8,0,0,1-.8-.8V311.8a.8.8,0,0,1,1.61,0V328.7A.8.8,0,0,1,555.63,329.5Z" style="fill: #353f50"/>
+          <path d="M558,328.7a.8.8,0,0,1-.8-.8V312.61a.8.8,0,1,1,1.61,0v15.28A.8.8,0,0,1,558,328.7Z" style="fill: #353f50"/>
+          <path d="M560.46,325.48a.8.8,0,0,1-.8-.8v-8.85a.8.8,0,1,1,1.61,0v8.85A.8.8,0,0,1,560.46,325.48Z" style="fill: #353f50"/>
+          <path d="M562.87,328.7a.8.8,0,0,1-.8-.8V312.61a.8.8,0,1,1,1.61,0v15.28A.8.8,0,0,1,562.87,328.7Z" style="fill: #353f50"/>
+          <path d="M565.28,325.48a.8.8,0,0,1-.8-.8v-8.85a.8.8,0,1,1,1.61,0v8.85A.8.8,0,0,1,565.28,325.48Z" style="fill: #353f50"/>
+          <path d="M567.7,323.07a.8.8,0,0,1-.8-.8v-4a.8.8,0,0,1,1.61,0v4A.8.8,0,0,1,567.7,323.07Z" style="fill: #353f50"/>
+        </g>
+        <text transform="translate(725.31 322.08)" style="font-size: 9px;fill: #353f50;letter-spacing: 0.05002170138888889em">&gt;</text>
+      </g>
+    </g>
+      <!-- </foreignObject> -->
       <g id="hand-overlay">
         <path id="finger" class="flesh" d="M751,298a22,22,0,0,1-15.56-37.56l29-29a22,22,0,0,1,31.11,31.11l-29,29A21.93,21.93,0,0,1,751,298Z"/>
         <path id="finger-2" data-name="finger" class="flesh" d="M751,367a22,22,0,0,1-15.56-37.56l24-24a22,22,0,0,1,31.11,31.11l-24,24A21.93,21.93,0,0,1,751,367Z"/>

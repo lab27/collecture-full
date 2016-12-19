@@ -1,0 +1,115 @@
+ <div id="tophalf">
+  <div id="record-holder">
+    <button id="record-btn">
+    {% include svg_icon.svg name="pause" %}
+    </button>
+    
+    <label id="record-label" for="record-btn">record</label>
+  </div>
+  <div id="done">done</div>
+  <div id="settings-toggle">{% include settings.svg %}</div>
+  <div id="sync-settings">{% include cloud.svg %}<span class="sync-count">3</span></div>
+</div>
+<div id="bottomhalf">
+  <div id="screen1" >
+    <div class="header">
+      <h4 class="text-center">Collections</h4>
+      <div class="add-group float-right">+</div>
+    </div>
+    <ul class="menu vertical" id="collections">
+      {% for collection in site.data.collections  %}
+        <li class="collection {{collection.privacy}}" id="collection{{forloop.index}}">
+          {% include folder.svg %}
+          <span class="talk-count">{{collection.count}}</span>
+
+          <span class="name">{{collection.name}}</span>
+          {% if collection.privacy == "private" %}
+          <span class="lock-icon">{% include lock.svg %}</span>
+          {% endif %}
+          <span class="drill-arrow float-right">></span>
+        </li>
+      {% endfor %}
+    </ul>
+    <!-- <div class="add-group">+ Add New Group</div> -->
+  </div>
+  <div id="screen2">
+    <div class="header">
+      <h4 class="text-center">Collection x</h4>
+      <div id="back-arrow" class="back-arrow float-left"><</div>
+    </div>
+    <ul class="menu vertical" id="collections">
+      <li class="playlist-play">{% include svg_icon.svg name="play"%}</li>
+      {% for collection in site.data.collections  %}
+        <li class="recording" id="c{{forloop.index}}">
+          {% include sound.svg %}
+          Recording {{forloop.index}}
+          <span class="drill-arrow float-right">></span></li>
+        {% endfor %}
+      </ul>
+      <!-- <div class="add-group">+ Add New Group</div> -->
+    </div>
+    <div id="screen3">
+      <div class="header">
+        <h4 class="text-center">RECORDING</h4>
+        <div id="talk-back-arrow" class="back-arrow float-left"><</div>
+        <div class="float-right" id="share-btn">•••</div>
+      </div>
+      <div class="talk-panel-top-buttons clearfix">
+        
+        <!-- <div class="close-btn float-right">&times;</div> -->
+      </div>
+      <!-- <div id="talk-title" class="text-center">10-33-29</div> -->
+      <div id="talk-date" class="text-center">Recorded Nov 21, 2016, 10:32</div>
+      <div class="row"> <div id="talk-collection-select" class="small-10 columns small-offset-1 clearfix">
+        <div class="small-2 columns select-icon-holder no-pad">{% include cloud-folder.svg %}</div>
+        <div class="small-10 columns no-pad"><select name="hall" id="hall" value="3">
+          <option selected="selected">Private Collection</option>
+          {% for collection in site.data.collections offset:1 %}
+          <option>{{collection.name}}</option>
+          {%endfor%}
+        </select>
+      </div>
+    </div></div>
+    <div id="description" class="row clearfix empty">
+      <p>No description
+      </p>
+    </div>
+    <div id="player">
+      <div id="track"></div>
+      <div id="playhead"></div>
+      <div id="timing" class="clearfix">
+        <span class="float-left">00:00</span>
+        <span class="float-right">14:23</span>
+      </div>
+      <div id="play-btn">  {% include svg_icon.svg name="play" %}
+      </div>
+    </div>
+  </div>
+</div>
+<!-- talk panel -->
+<div id="description-editor">
+  <textarea type="text" id="description-input" maxlength="500" style="height: 100vh; padding: 24px; background: none;border:none;box-shadow:none"></textarea>
+  <div class="button" id="description-editor-button">DONE</div>
+</div>
+<div id="talk-actions-container">
+  <div id="talk-actions">
+    <div class="content1">
+      <p class="text-center">Actions</p>
+      <ul class="menu vertical">
+        <li><a class="button hollow alert radius">Delete</a></li>
+        <li><a class="button hollow">Share</a></li>
+        <li><a class="button hollow">Export To...</a></li>
+        <li><a class=""></a></li>
+        <li><a class="button secondary hollow cancel">Cancel</a></li>
+      </ul>
+    </div>
+      <div class="content2 hide">
+      <p class="text-center">Are you sure?</p>
+      <ul class="menu horizontal expanded">
+        
+        <li><a class="button secondary white hollow">Delete</a></li>
+        <li><a class="button secondary cancel2">Cancel</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
