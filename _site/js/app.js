@@ -7,8 +7,10 @@ var pointhand = $("#point-hand")
 var handphone = $("#handphone")
 var body = $("body")
 var footer = $("footer")
+var crntAnchor = ""
 var crntLbl = ""
 var nxtIndx = ""
+var groupsRepeater = 0
 
 //Colors
 var blue = "#39beca",
@@ -18,6 +20,16 @@ var blue = "#39beca",
     lightGray= "#f4f9fa",
     orange= "#c9a03a",
     red= "#fd4a49";
+
+//helpers
+
+var groupsAgain = function(){
+  console.log("called groupsAgain")
+  if (crntAnchor == "Groups" && groupsRepeater < 3){
+    tl_groups.tweenFromTo("group1","groupsEnd")
+  }
+  groupsRepeater +=1;
+}
 
 //Initial sets:
 TweenMax.set(pointhand,{x:1000,y:1000})
@@ -43,9 +55,9 @@ var tmax_options = {
   },
   onStartScope: {},
   onUpdate: function() {
-    getCurrentLabel()
-    console.log('on update called: ' + crntLbl);
-    console.log('next label: ' + wholeMovie.getLabelAfter())
+    // getCurrentLabel()
+    // console.log('on update called: ' + crntLbl);
+    // console.log('next label: ' + wholeMovie.getLabelAfter())
   },
   onUpdateScope: {},
   onRepeat: function() {
@@ -70,31 +82,31 @@ var tmax_options = {
 
 
 
+//Timelines!
 var tl_intro = new TimelineMax(tmax_options);
-
 tl_intro
   .add("introStart")
-  .to($("body"),.5,{backgroundColor:blue})
-  //phone up
-  .to(handphone,1,{x:0, y:0, ease:Power4.easeOut})
+  .to($("body"),.5,{backgroundColor:blue},"introStart")
+  //phone up and normal size
+  .to(handphone,1,{x:0, y:0, scale: 1, ease:Power4.easeOut},"introStart")
+  //unblur
+  .to(phoneBlur, 0.6,{attr:{stdDeviation:0}},"introStart")
   //hand down
   .to(pointhand,.5,{x:800, y:800}, "-=.5")
   //blur the people
   .to(peopleBlur, 0.6,{attr:{stdDeviation:10}})
   //hide the people
   .staggerTo(person,.2,{autoAlpha: 0},.1)
-  //.addPause()
-  .add("introEnd");
-
-  
-
-
+  .add("introEnd")
+  .addPause("introEnd");
 
 var tl_easy = new TimelineMax(tmax_options);
-
 tl_easy
   .add("easyStart")
-  .to(body,.5,{backgroundColor:blue})
+  .to(people,.2,{autoAlpha: 1},"easyStart")
+  .to(body,.5,{backgroundColor:blue},"easyStart")
+  //phone to center
+  .to(handphone,.7,{x:0, y:0, scale: 1, ease:Power4.easeInOutCubic},"easyStart")
   //show the people
   .staggerTo(person,.2,{autoAlpha: 1},.1)
   //pointer to zero
@@ -112,89 +124,66 @@ tl_easy
   .add("easyEnd")
 
 
-var tl_groups = new TimelineMax({repeat: -1});
-
+var tl_groups = new TimelineMax(tmax_options);
 tl_groups
   .add("groupsStart")
-  //hide people
-  .to(people,.2,{autoAlpha:0},"groups")
-  //scene1
-  .add("group1")
-  .to(body,.5,{backgroundColor:dark},"group1")
-  .to(phoneBlur, 0.6,{attr:{stdDeviation:0}},"group1")
-  .to(handphone,.5,{x:-400,y:0, ease:Power4.easeOut})
+  //setup:
+  .to(people,.2,{autoAlpha:0},"groupsStart")
+  .to(phoneBlur, 0.6,{attr:{stdDeviation:0}},"groupsStart")
+  .to(handphone,.5,{x:-400,y:0, scale: 1, ease:Power4.easeOut},"groupsStart")
+  .to(body,.5,{backgroundColor:dark},"groupsStart")
 
-  .add("group2")
-  .to(pointhand,.5,{x:0,y:0, ease:Power4.easeOut},"group2")
-  .to(body,.5,{backgroundColor:red},"group2")
+  .add("group1")
+  .to(pointhand,.5,{x:0,y:0, ease:Power4.easeOut},"group1+1")
   .to(pointhand,.5,{x:200,y:300, ease:Power4.easeOut})
 
-  .add("group3")
-  .to(pointhand,.5,{x:0,y:0, ease:Power4.easeOut},"group3")
-  .to(body,.5,{backgroundColor:orange},"group3")
+  .add("group2")
+  .to(pointhand,.5,{x:0,y:0, ease:Power4.easeOut},"group2+1")
+  .to(body,.5,{backgroundColor:orange})
   .to(pointhand,1,{x:200,y:300, ease:Power4.easeOut})
+
+  .add("group3")
+  .to(pointhand,.5,{x:0,y:0, ease:Power4.easeOut},"group3+1")
+  .to(body,.5,{backgroundColor:red})
+  .to(pointhand,1,{x:200,y:300, ease:Power4.easeOut})
+  .addPause()
   .add("groupsEnd");
 
 
 var tl_organize = new TimelineMax(tmax_options);
 tl_organize
   .add("organizeStart")
+  .to(people,.2,{autoAlpha:0},"organizeStart")
   .to(body,.5,{backgroundColor:green},"organize")
   .to(handphone,.5,{x:"-100", y: 0, scale:1.3,ease:Power4.easeOut},"organize")
+  .addPause()
   .add("organizeEnd")
 
 var tl_share = new TimelineMax(tmax_options);
 tl_share
   .add("shareStart")
+  .to(people,.2,{autoAlpha:0},"shareStart")
   .to($("body"),.5,{backgroundColor:dark})
   .to(handphone,.5,{x:0,y:800,scale:1,ease:Power4.easeOut})
+  .to(footer,.5,{bottom:"0",textAlign:"left",left:"24px", ease:Power4.easeOut},"shareStart")
+  .to($("footer img"),.5,{width:"120px", height:"120px",display:"inline",margin:"0",ease:Power4.easeOut},"shareStart")
   .add("shareEnd");
    
   
-function download(){
-    var tl = new TimelineMax(tmax_options);
-    tl
-   .to($("body"),.5,{backgroundColor:blue})
-        .to(footer,.5,{bottom:"50vh",textAlign:"center",left:0})
-        .to($("footer img"),.5,{scale:1.5,display:"inline-block",margin:"36px"},"-=.5")
-         .addPause();
-
-        return tl;
-}
+var tl_download = new TimelineMax(tmax_options);
+tl_download
+  .add("downloadStart")
+  .to(people,.2,{autoAlpha:0},"downloadStart")
+  .to($("body"),.5,{backgroundColor:blue})
+  .to(footer,.5,{bottom:"50vh",textAlign:"center",left:0})
+  .to($("footer img"),.5,{width:"160px", height:"160px",display:"inline-block",margin:"36px"},"-=.5")
+  .add("downloadEnd");
    
-   
-
-
-//Whole Timeline:
-var wholeMovie = new TimelineMax(tmax_options);
-//wholeMovie.pause();
-
-//wholeMovie.add(intro);
-// wholeMovie.add(easy);
-// wholeMovie.add(groups);
-// wholeMovie.add(organize);
-// wholeMovie.add(share);
-// wholeMovie.add(download);
 
 //hide people at first
 TweenMax.set(person,{autoAlpha:0})
 
-//**********
-//transition functions:
-//************
 
-//show people
-var showPeople = function(){
-    TweenMax.to(people,.2,{autoAlpha: 1})
-}
-
-//hide people
-var hidePeople = function(){
-    TweenMax.to(people,.2,{autoAlpha: 0})
-}
-
-
-//******************
 
 
 $(document).ready(function() {
@@ -261,40 +250,34 @@ $(document).ready(function() {
         //events
         onLeave: function(index, nextIndex, direction){
             nxtIndx = nextIndex
-            // console.log("+++++++++++++++++++")
-            // console.log("leaving: " + index)
-            // $("#header a:first-child").text(nextIndex + 
-            //     ": " + wholeMovie.currentLabel())
-             if (nextIndex == 1) {
+            if (nextIndex == 1) {
 
                 console.log("I should play the first anim...")
-                tl_intro.tweenFromTo("introStart","introEnd")
-               showPeople()
+              tl_intro.tweenFromTo("introStart","introEnd")
                 
             } else if (nextIndex == 2) {
 
-                 wholeMovie.seek("easy")               
-                 showPeople()
+                 tl_easy.tweenFromTo("easyStart","easyEnd")               
               
          
  
             } else if (nextIndex == 3) {
-                hidePeople()
-                 wholeMovie.play("groups")
+                 tl_groups.tweenFromTo("groupsStart","groupsEnd")
             } else if (nextIndex == 4) {
-                 wholeMovie.play("organize")
+                 tl_organize.tweenFromTo("organizeStart","organizeEnd")
             } else if (nextIndex == 5) {
-                 wholeMovie.play("share")
+                 tl_share.tweenFromTo("shareStart","shareEnd")
 
             } else if(nextIndex == 6) {
-                 wholeMovie.play("download")
+                 tl_download.tweenFromTo("downloadStart","downloadEnd")
 
             }
 
         },
         afterLoad: function(anchorLink, index){
             console.log("+++++++++++++++++++")
-            console.log("just loaded: " + anchorLink)
+            console.log("just loaded: " + index)
+            crntAnchor = anchorLink
             // if (index == 1) {
             //   console.log("i'm at the beginning!")
             //   wholeMovie.tweenFromTo("introStart","introEnd")
@@ -307,10 +290,10 @@ $(document).ready(function() {
             console.log("just rendered")
             $('#fullpage').css('display','block')
             $('#people-root').css('display','block')
-            if (nxtIndx == "") {
-              console.log("I must be at the beginning?")
-              tl_intro.tweenFromTo("introStart","introEnd")
-            }
+            // if (nxtIndx == "") {
+            //   console.log("I must be at the beginning?")
+            //   tl_intro.tweenFromTo("introStart","introEnd")
+            // }
         },
         afterResize: function(){
         console.log("+++++++++++++++++++")
@@ -323,6 +306,6 @@ $(document).ready(function() {
 });
 
 var getCurrentLabel = function(){
-    crntLbl = wholeMovie.currentLabel()
+    //crntLbl = wholeMovie.currentLabel()
     // $("#header a").text(nxtIndx + ":" +crntLbl)
 }

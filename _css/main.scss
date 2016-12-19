@@ -143,6 +143,7 @@ footer {
   width: 100vw;
   text-align: center;
   height: 120px;
+  transition: all .2s ease;
 
   @include respond-to(medium){
   	text-align: left;
@@ -152,6 +153,20 @@ footer {
   	width: 120px;
   	height: 120px;
   }
+  // &.focus {
+  //   // background: orange;
+  //   bottom: 50vh;
+  //   margin:0;
+  //   left: 0;
+  //   text-align: center;
+  //   padding:0;
+
+  //   img {
+  //     width: 150px;
+  //     height: 150px;
+  //     margin:0;
+  //   }
+  // }
 }
 
 a {
@@ -165,6 +180,42 @@ a {
 	display:inline-block;
 	float: right;
 	text-align: right;
+}
+
+#responsive {
+  display: inline-block;
+  margin-right: 24px;
+  color: lemonchiffon;
+  font-family: "ginger-light";
+  @include respond-to(small){
+    &:after {
+    content: "small"
+    }
+  }
+
+    @include respond-to(medium){
+    &:after {
+    content: "medium"
+    }
+  }
+
+    @include respond-to(large){
+    &:after {
+    content: "large"
+    }
+  }
+
+    @include respond-to(xlarge){
+    &:after {
+    content: "xlarge"
+    }
+  }
+
+    @include respond-to(xxlarge){
+    &:after {
+    content: "xxlarge"
+    }
+  }
 }
 
 .float-right {
