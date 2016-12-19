@@ -20,7 +20,7 @@ $(document).ready(function() {
         //Navigation
         menu: '#menu',
         lockAnchors: false,
-        anchors:['one', 'two','three','four','five','six'],
+        //anchors:['one', 'two','three','four','five','six'],
         navigation: true,
         navigationPosition: 'right',
         //navigationTooltips: ['intro', 'secondSlide'],

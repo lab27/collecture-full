@@ -315,19 +315,19 @@ body {
   text-align: center;
   padding: 24px; }
 
-body.fp-viewing-one {
+body.fp-viewing-Intro {
   background: #39beca; }
 
-body.fp-viewing-two {
+body.fp-viewing-Ease {
   background: #39beca; }
 
-body.fp-viewing-three {
+body.fp-viewing-Groups {
   background: #353F50; }
 
-body.fp-viewing-four {
+body.fp-viewing-Organizing {
   background: #39beca; }
 
-body.fp-viewing-five {
+body.fp-viewing-Sharing {
   background: #4bddad; }
 
 footer {

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Home Page
+title: Collecture
 ---
 <div id="fullpage">
 	<div id="header">
@@ -11,7 +11,7 @@ title: Home Page
 		</div>
 	</div>
 	{% for heading in site.data.headings %}
-		<div class="section" data-tooltip="{{heading.tooltip}}">
+		<div class="section" data-tooltip="{{heading.tooltip}}" data-anchor="{{heading.tooltip}}">
 			<h1>{{heading.title}}</h1>
 			<p class="lead">{{heading.subtitle}}</p>
 		</div>
