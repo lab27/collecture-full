@@ -281,12 +281,59 @@ font-family: 'ginger-light';
 }
 
 //UI svg:
-#groups {
-  #collections-header {
+      .flesh {
+        fill: #f0bc8c;
+      }
+
+      .nail {
+        fill: #f7cca9;
+      }
+
+      .flesh-shadow {
+        fill: #d6a983;
+      }
+#description {
+  font-size: 9px;
+  fill: $gray;
+}
+
+#player {
+  fill: $dark;
+}
+
+#dropbg {
+  fill: $gray;
+}
+
+
+
+.header-text {
     font-family: "ginger-light";
     letter-spacing: .1rem;
     font-size: 11px;
+    fill: white;
   }
+
+  #datetime {
+    fill: $gray;
+    font-size: 9px;
+  }
+
+  #share-btn {
+    circle {
+      fill: $blue;
+
+    }
+
+          #dots {
+        circle {
+          fill: white;
+        }
+      }
+  }
+
+#groups {
+  
 
   #plus-btn {
     circle {
@@ -299,6 +346,12 @@ font-family: 'ginger-light';
   .group-tab {
     font-size: 11px;
     fill: rgba($dark, .5);
+    &.private {
+      .box {
+
+      stroke: $green;
+      }
+    }
   }
   .box {
     fill: white;

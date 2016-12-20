@@ -423,10 +423,40 @@ p.lead {
 #fp-nav ul li a span, .fp-slidesNav ul li a span {
   background: white; }
 
-#groups #collections-header {
+.flesh {
+  fill: #f0bc8c; }
+
+.nail {
+  fill: #f7cca9; }
+
+.flesh-shadow {
+  fill: #d6a983; }
+
+#description {
+  font-size: 9px;
+  fill: #c3cbd5; }
+
+#player {
+  fill: #353F50; }
+
+#dropbg {
+  fill: #c3cbd5; }
+
+.header-text {
   font-family: "ginger-light";
   letter-spacing: .1rem;
-  font-size: 11px; }
+  font-size: 11px;
+  fill: white; }
+
+#datetime {
+  fill: #c3cbd5;
+  font-size: 9px; }
+
+#share-btn circle {
+  fill: #39beca; }
+
+#share-btn #dots circle {
+  fill: white; }
 
 #groups #plus-btn circle {
   fill: rgba(195, 203, 213, 0.3); }
@@ -437,6 +467,8 @@ p.lead {
 #groups .group-tab {
   font-size: 11px;
   fill: rgba(53, 63, 80, 0.5); }
+  #groups .group-tab.private .box {
+    stroke: #4bddad; }
 
 #groups .box {
   fill: white;
