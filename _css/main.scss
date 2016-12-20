@@ -7,7 +7,7 @@ $gray: #c3cbd5;
 $light-gray: #f4f9fa;
 $orange: #c9a03a;
 $red: #4d4a49;
-@import "ui";
+//@import "ui";
 
 * {
 	box-sizing: border-box;
@@ -278,4 +278,37 @@ font-family: 'ginger-light';
 
 #fp-nav ul li a span, .fp-slidesNav ul li a span {
   background: white;
+}
+
+//UI svg:
+#groups {
+  #collections-header {
+    font-family: "ginger-light";
+    letter-spacing: .1rem;
+    font-size: 11px;
+  }
+
+  #plus-btn {
+    circle {
+      fill: rgba($gray,.3);
+    }
+    path {
+      fill: white;
+    }
+  }
+  .group-tab {
+    font-size: 11px;
+    fill: rgba($dark, .5);
+  }
+  .box {
+    fill: white;
+    stroke: $gray;
+  }
+  .folder {
+    fill: rgba($dark, .5);
+  }
+}
+
+#UI-holder {
+  stroke: $gray;
 }

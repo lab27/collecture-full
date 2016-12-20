@@ -79,7 +79,8 @@ var tmax_options = {
 var tl_intro = new TimelineMax(tmax_options);
 tl_intro
   .add("introStart")
-  .set($("#UI1"),{autoAlpha:1})
+  .set($("#groups"),{autoAlpha:0})
+  .set($("#recordings"),{autoAlpha:1})
   .to($("body"),.5,{backgroundColor:blue},"introStart")
   //topbg colors
   .to($("#topBG"),.2,{fill:"white"},"-=.1")
@@ -102,7 +103,7 @@ tl_intro
 var tl_easy = new TimelineMax(tmax_options);
 tl_easy
   .add("easyStart")
-  .set($("#UI1"),{autoAlpha:1})
+  .set($("#groups"),{autoAlpha:1})
   .to(people,.2,{autoAlpha: 1},"easyStart")
   .to(body,.5,{backgroundColor:blue},"easyStart")
   //phone to center
@@ -121,19 +122,20 @@ tl_easy
   .to($("#record-text tspan"),1,{text:"00:01"})
   .to($("#record-text tspan"),1,{text:"00:02"})
   .to($("#record-text tspan"),1,{text:"00:03"})
+  .add("handDown","-=2")
   //unblur the people
-  .to(peopleBlur, 0.6,{attr:{stdDeviation:0}})
+  .to(peopleBlur, 0.6,{attr:{stdDeviation:0}},"handDown")
   //blur the phone
-  .to(phoneBlur, 0.6,{attr:{stdDeviation:6}})
+  .to(phoneBlur, 0.6,{attr:{stdDeviation:6}},"handDown")
   //hand/phone down:
-  .to(handphone,.7,{x:0, y:500, ease:Power4.easeInOutCubic},"-=1")
+  .to(handphone,.7,{x:0, y:500, ease:Power4.easeInOutCubic},"handDown")
   .add("easyEnd")
 
 
 var tl_groups = new TimelineMax(tmax_options);
 tl_groups
   .add("groupsStart")
-  .set($("#UI1"),{autoAlpha:0})
+  .set($("#recordings"),{autoAlpha:0})
   //setup:
   .to(people,.2,{autoAlpha:0},"groupsStart")
   .to(phoneBlur, 0.6,{attr:{stdDeviation:0}},"groupsStart")
@@ -190,7 +192,30 @@ tl_download
 //hide people at first
 TweenMax.set(person,{autoAlpha:0})
 
+var playTheRightScene = function(anchor){
+ if (anchor == 1) {
 
+                console.log("I should play the first anim...")
+              tl_intro.tweenFromTo("introStart","introEnd")
+                
+            } else if (anchor == 2) {
+
+                 tl_easy.tweenFromTo("easyStart","easyEnd")               
+              
+         
+ 
+            } else if (anchor == 3) {
+                 tl_groups.tweenFromTo("groupsStart","groupsEnd")
+            } else if (anchor == 4) {
+                 tl_organize.tweenFromTo("organizeStart","organizeEnd")
+            } else if (anchor == 5) {
+                 tl_share.tweenFromTo("shareStart","shareEnd")
+
+            } else if(anchor == 6) {
+                 tl_download.tweenFromTo("downloadStart","downloadEnd")
+
+            }
+}
 
 
 $(document).ready(function() {
@@ -256,40 +281,16 @@ $(document).ready(function() {
 
         //events
         onLeave: function(index, nextIndex, direction){
-            nxtIndx = nextIndex
-            if (nextIndex == 1) {
-
-                console.log("I should play the first anim...")
-              tl_intro.tweenFromTo("introStart","introEnd")
-                
-            } else if (nextIndex == 2) {
-
-                 tl_easy.tweenFromTo("easyStart","easyEnd")               
-              
-         
- 
-            } else if (nextIndex == 3) {
-                 tl_groups.tweenFromTo("groupsStart","groupsEnd")
-            } else if (nextIndex == 4) {
-                 tl_organize.tweenFromTo("organizeStart","organizeEnd")
-            } else if (nextIndex == 5) {
-                 tl_share.tweenFromTo("shareStart","shareEnd")
-
-            } else if(nextIndex == 6) {
-                 tl_download.tweenFromTo("downloadStart","downloadEnd")
-
-            }
+            // playTheRightScene(nextIndex)
+           
 
         },
         afterLoad: function(anchorLink, index){
             console.log("+++++++++++++++++++")
             console.log("just loaded: " + index)
-            getCurrentAnchor(anchorLink)
-            // if (index == 1) {
-            //   console.log("i'm at the beginning!")
-            //   wholeMovie.tweenFromTo("introStart","introEnd")
-            // }
-
+            //getCurrentAnchor(anchorLink)
+            playTheRightScene(index)
+       
 
         },
         afterRender: function(){
@@ -297,10 +298,28 @@ $(document).ready(function() {
             console.log("just rendered")
             $('#fullpage').css('display','block')
             $('#people-root').css('display','block')
-            if (crntAnchor == "Intro") {
-              console.log("I must be at the beginning?")
-              tl_intro.tweenFromTo("introStart","introEnd")
-            }
+            // if (crntAnchor == 1) {
+
+            //     console.log("I should play the first anim...")
+            //   tl_intro.tweenFromTo("introStart","introEnd")
+                
+            // } else if (crntAnchor == 2) {
+
+            //      tl_easy.tweenFromTo("easyStart","easyEnd")               
+              
+         
+ 
+            // } else if (crntAnchor == 3) {
+            //      tl_groups.tweenFromTo("groupsStart","groupsEnd")
+            // } else if (crntAnchor == 4) {
+            //      tl_organize.tweenFromTo("organizeStart","organizeEnd")
+            // } else if (crntAnchor == 5) {
+            //      tl_share.tweenFromTo("shareStart","shareEnd")
+
+            // } else if(crntAnchor == 6) {
+            //      tl_download.tweenFromTo("downloadStart","downloadEnd")
+
+            // }
         },
         afterResize: function(){
         console.log("+++++++++++++++++++")
