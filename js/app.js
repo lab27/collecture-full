@@ -77,7 +77,6 @@ TweenMax.set(pointhand,{x:1000,y:1000})
 TweenMax.set(handphone,{x:0,y:1000})
 TweenMax.set(groupBox, {fill: green})
 TweenMax.set(description, {autoAlpha: 0})
-TweenMax.set(studentScene, {autoAlpha: 0})
 TweenMax.set($("#shadow"),{autoAlpha:.3})
 
 TweenMax.set($(".group-tab.private .box"), {fill: "white"})
@@ -162,28 +161,29 @@ tl_main
   //show the people
   .staggerTo(person,.2,{autoAlpha: 1},.1)
   //pointer to zero
-  .to(pointhand,.5,{x:0, y:-65, ease:Power4.easeInOutCubic},"easyStart+=1")
+  .to(pointhand,.5,{x:0, y:-65, ease:Power4.easeInOutCubic},"easyStart")
   //pointer stays, then goes back down
-  .to(pointhand,1,{x:500,y:500, ease:Power4.easeOut},"+=.2")
+  .to(pointhand,1,{x:500,y:500, ease:Power4.easeOut},"easyStart+=.7")
   //topbg green
-  .to($("#topBG"),.2,{fill:green},"easyStart+=1.6")
-  .to($("#record-btn"),.2,{fill:"white"},"easyStart+=1.6")
-  .set($("#record-text tspan"),{text:"00:00"},"easyStart+=1.6")
-  .to($("#record-text"),.2,{fill:"white"},"easyStart+=1.6")
+  .to($("#topBG"),.2,{fill:green},"easyStart+=.7")
+  .to($("#record-btn"),.2,{fill:"white"},"easyStart+=.7")
+  .set($("#record-text tspan"),{text:"00:00"},"easyStart+=.7")
+  .to($("#record-text"),.2,{fill:"white"},"easyStart+=.7")
   .to($("#record-text tspan"),1,{text:"00:01"})
   .to($("#record-text tspan"),1,{text:"00:02"})
   .to($("#record-text tspan"),1,{text:"00:03"})
-  .add("handDown","-=2")
+  .add("handDown")
   //unblur the people
   .to(peopleBlur, 0.6,{attr:{stdDeviation:0}},"handDown")
   //blur the phone
   .to(phoneBlur, 0.6,{attr:{stdDeviation:6}},"handDown")
   //hand/phone down:
   .to(handphone,.7,{x:0, y:500, ease:Power4.easeInOutCubic},"handDown")
+  .to($("#topBG"),4,{fill:green},"+=2")
   .add("easyEnd")
 //groups
   .add("groupsStart")
-  .set($("#recordings"),{autoAlpha:0})
+  .set($("#recordings"),{autoAlpha:0},"groupsStart+=.1")
   .set($("#groups"),{autoAlpha:1})
   .set($("#talk"),{autoAlpha:0})
   //topbg colors
@@ -199,24 +199,24 @@ tl_main
 
   .add("group1")
   .to(pointhand,.5,{x:85,y:0, ease:Power4.easeOut},"group1")
-  .to($("#new-group-1"),.2,{autoAlpha:1},"+=.2")
-  .to($("#new-group-1 .box"),.2,{fill:"white"},"+=.2")
-  .to(pointhand,.5,{x:200,y:300, ease:Power4.easeOut},"-=.2")
+  .to($("#new-group-1"),.2,{autoAlpha:1},"group1+=.7")
+  .to($("#new-group-1 .box"),.2,{fill:"white"},"group1+=.9")
+  .to(pointhand,.5,{x:200,y:300, ease:Power4.easeInOutCubic},"group1+=.7")
 
   .add("group2")
   .to(pointhand,.5,{x:85,y:0, ease:Power4.easeOut},"group2+=1")
-  .to($("#new-group-2"),.2,{autoAlpha:1},"+=.2")
-  .to($("#new-group-2 .box"),.2,{fill:"white"},"+=.2")
-  .to(body,.5,{backgroundColor:orange})
-  .to(pointhand,1,{x:200,y:300, ease:Power4.easeOut},"-=.7")
+  .to($("#new-group-2"),.2,{autoAlpha:1},"group2+=1.7")
+  .to($("#new-group-2 .box"),.2,{fill:"white"},"group2+=1.9")
+  .to(body,.5,{backgroundColor:orange},"group2+=1")
+  .to(pointhand,1,{x:200,y:300, ease:Power4.easeOut},"group2+=1.7")
 
   .add("group3")
   .to(pointhand,.5,{x:85,y:0, ease:Power4.easeOut},"group3+=1")
-  .to($("#new-group-3"),.2,{autoAlpha:1},"+=.2")
-  .to($("#new-group-3 .box"),.2,{fill:"white"},"+=.2")
-  .to(body,.5,{backgroundColor:red})
-  .to(pointhand,1,{x:200,y:300, ease:Power4.easeOut},"-=.7")
-  .to($("#new-group-3 .box"),.5,{fill:"lemonchiffon"},"+=2")
+  .to($("#new-group-3"),.2,{autoAlpha:1},"group3+=1.7")
+  .to($("#new-group-3 .box"),.2,{fill:"white"},"group3+=1.9")
+  .to(body,.5,{backgroundColor:red},"groupd3+=1")
+  .to(pointhand,1,{x:200,y:300, ease:Power4.easeOut},"group3+=1.7")
+  .to($("#new-group-3 .box"),.5,{fill:"white"},"+=2")
   .add("groupsEnd")
 //organize
   .add("organizeStart")
