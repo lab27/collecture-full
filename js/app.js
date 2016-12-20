@@ -179,16 +179,17 @@ tl_main
   .to($("#new-group-3 .box"),.2,{fill:"white"},"+=.2")
   .to(body,.5,{backgroundColor:red})
   .to(pointhand,1,{x:200,y:300, ease:Power4.easeOut},"-=.7")
+  .to($("#new-group-3 .box"),.5,{fill:"lemonchiffon"},"+=2")
   .add("groupsEnd")
-  .addPause("groupsEnd")
 //organize
   .add("organizeStart")
-  //.set($("#groups"),{autoAlpha:0},"organizeStart")
-  .set($("#datetime"),{text:'Recorded ' + dateTimeOutput})
-  .set($("#talk"),{autoAlpha:1})
+  
   .to(people,.2,{autoAlpha:0},"organizeStart")
   .to(body,.5,{backgroundColor:green},"organizeStart")
-  .to(handphone,.5,{x:"-100", y: 0, scale:1.3,ease:Power4.easeOut},"organize")
+  .to($("#groups"),.2,{autoAlpha:0},"organizeStart")
+  .to($("#datetime"),.2,{text:'Recorded ' + dateTimeOutput},"organizeStart")
+  .to($("#talk"),.2,{autoAlpha:1},"organizeStart")
+  .to(handphone,.5,{x:"-100", y: 0, scale:1.3,ease:Power4.easeOut},"organizeStart")
   .add("organizeEnd")
 //share
   .add("shareStart")
