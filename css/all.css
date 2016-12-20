@@ -434,13 +434,55 @@ p.lead {
 
 #description {
   font-size: 9px;
-  fill: #c3cbd5; }
+  fill: #c3cbd5;
+  font-family: 'ginger-light'; }
 
 #player {
   fill: #353F50; }
 
+#drop .folder {
+  fill: white; }
+
+#drop text {
+  font-size: 8px;
+  fill: white;
+  font-family: 'ginger-light'; }
+
+#drop #droparrow {
+  fill: white; }
+
 #dropbg {
   fill: #c3cbd5; }
+
+#description-edit-bg {
+  fill: #f4f9fa;
+  stroke: #c3cbd5; }
+
+#description-label {
+  font-size: 8px;
+  fill: #c3cbd5;
+  letter-spacing: .1rem;
+  font-family: 'ginger-light'; }
+
+#description-input {
+  fill: #353F50;
+  font-size: 12px; }
+
+#keyBG {
+  fill: #c3cbd5; }
+
+#ok-btn rect {
+  fill: #4bddad; }
+
+#ok-btn text {
+  fill: white;
+  letter-spacing: 1px;
+  font-size: 12px; }
+
+.key {
+  fill: rgba(255, 255, 255, 0.3); }
+  .key:after {
+    content: attr(data-key); }
 
 .header-text {
   font-family: "ginger-light";
@@ -450,7 +492,8 @@ p.lead {
 
 #datetime {
   fill: #c3cbd5;
-  font-size: 9px; }
+  font-size: 9px;
+  font-family: 'ginger-light'; }
 
 #share-btn circle {
   fill: #39beca; }

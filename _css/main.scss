@@ -295,10 +295,26 @@ font-family: 'ginger-light';
 #description {
   font-size: 9px;
   fill: $gray;
+  font-family: 'ginger-light';
 }
 
 #player {
   fill: $dark;
+}
+
+#drop {
+  .folder {
+    fill: white;
+  }
+  text {
+    font-size: 8px;
+    fill: white;
+    font-family: 'ginger-light';
+  }
+
+  #droparrow {
+    fill: white;
+  }
 }
 
 #dropbg {
@@ -306,7 +322,43 @@ font-family: 'ginger-light';
 }
 
 
+#description-edit-bg {
+  fill:$light-gray;
+  stroke: $gray;
+}
 
+#description-label {
+  font-size: 8px;
+  fill: $gray;
+  letter-spacing: .1rem;
+  font-family: 'ginger-light';
+}
+
+#description-input {
+  fill: $dark;
+  font-size: 12px;
+}
+
+#keyBG {
+  fill:$gray;
+}
+
+#ok-btn {
+  rect {
+    fill: $green;
+  }
+  text {
+    fill: white;
+    letter-spacing:1px;
+    font-size: 12px;
+  }
+}
+.key {
+  fill:rgba(white,.3);
+  &:after {
+    content: attr(data-key)
+  }
+}
 .header-text {
     font-family: "ginger-light";
     letter-spacing: .1rem;
@@ -317,6 +369,7 @@ font-family: 'ginger-light';
   #datetime {
     fill: $gray;
     font-size: 9px;
+    font-family: 'ginger-light';
   }
 
   #share-btn {
