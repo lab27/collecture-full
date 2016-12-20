@@ -292,6 +292,37 @@ font-family: 'ginger-light';
       .flesh-shadow {
         fill: #d6a983;
       }
+
+//student 
+
+#head {
+  fill: #f0bc8c;
+}
+
+#mouth, #hair {
+  fill: #a88a73;
+}
+
+.features {
+ fill: none;
+        stroke: #a88a73;
+        stroke-linecap: round;
+        stroke-miterlimit: 10;
+        stroke-width: 7px;
+}
+
+#headphones {
+  fill: black;
+}
+
+#eyes circle {
+  fill: $dark;
+}
+
+#shirt {
+  fill: $blue;
+}
+
 #description {
   font-size: 9px;
   fill: $gray;

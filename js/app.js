@@ -7,11 +7,22 @@ var pointhand = $("#point-hand")
 var handphone = $("#handphone")
 var groupBox = $(".group-tab .box")
 var description = $("#description-edit")
+var studentScene = $("#student-scene")
 var body = $("body")
 var footer = $("footer")
 var crntAnchor = ""
 var crntLbl = ""
 var nxtIndx = ""
+// var keys = new Object()
+
+// function getKeyPositions() {
+//   $(".key").each(function(){
+//     var myX = $(this).position().left
+//     var myY = $(this).position().top
+//   })
+// }
+
+var keyD = $('.key[data-key="d"]')
 
 //date 
 var d = new Date();
@@ -30,7 +41,8 @@ var blue = "#39beca",
     gray= "#c3cbd5",
     lightGray= "#f4f9fa",
     orange= "#c9a03a",
-    red= "#fd4a49";
+    red= "#fd4a49",
+    fadedWhite = "rgba(255,255,255,.3)";
 
 //helpers
 
@@ -45,6 +57,9 @@ TweenMax.set(pointhand,{x:1000,y:1000})
 TweenMax.set(handphone,{x:0,y:1000})
 TweenMax.set(groupBox, {fill: green})
 TweenMax.set(description, {autoAlpha: 0})
+TweenMax.set(studentScene, {autoAlpha: 0})
+TweenMax.set($("#shadow"),{autoAlpha:.3})
+
 TweenMax.set($(".group-tab.private .box"), {fill: "white"})
 
 var tmax_options = {
@@ -195,41 +210,119 @@ tl_main
   .to(pointhand,.5,{x:0,y:100})
   .to(description,.2,{autoAlpha:1})
   .add("typing")
-  .to($("#description-input"),3.8,{text:"Discussed Carl Sagan."},"typing")
+  .fromTo($("#cursor"),4.2,{x:-126},{x:-3, ease: SteppedEase.config(21)},"typing")
+  .to($("#description-input"),4.2,{text:"Discussed Carl Sagan.",ease: SteppedEase.config(21)},"typing")
   .to(pointhand,.2,{x:10,y:100},"typing")
-  .to($(".key[data-key='q']"),.1,{fill: green},"typing")
-  .to($(".key[data-key='q']"),.1,{fill: "white"},"typing")
-  .to(pointhand,.2,{x:20,y:200},"typing+=.2")
-  .to(pointhand,.2,{x:30,y:300},"typing+=.4")
-  .to(pointhand,.2,{x:20,y:200},"typing+=.6")
-  .to(pointhand,.2,{x:10,y:100},"typing+=.8")
-  .to(pointhand,.2,{x:20,y:100},"typing+=1")
-  .to(pointhand,.2,{x:30,y:100},"typing+=1.2")
-  .to(pointhand,.2,{x:40,y:100},"typing+=1.4")
-  .to(pointhand,.2,{x:30,y:100},"typing+=1.6")
-  .to(pointhand,.2,{x:20,y:100},"typing+=1.8")
-  .to(pointhand,.2,{x:10,y:100},"typing+=2")
-  .to(pointhand,.2,{x:20,y:100},"typing+=2.2")
-  .to(pointhand,.2,{x:30,y:100},"typing+=2.4")
-  .to(pointhand,.2,{x:40,y:100},"typing+=2.6")
-  .to(pointhand,.2,{x:30,y:100},"typing+=2.8")
-  .to(pointhand,.2,{x:20,y:100},"typing+=3")
-  .to(pointhand,.2,{x:10,y:100},"typing+=3.1")
-  .to(pointhand,.2,{x:30,y:100},"typing+=3.4")
-  .to(pointhand,.2,{x:40,y:100},"typing+=3.6")
-  .to(pointhand,.2,{x:50,y:100},"typing+=3.8")
-  .to(pointhand,.5,{x:20,y:300, ease:Power4.easeOut},"+=.3")
+  //D
+  .to(pointhand,.2,{x:-30,y:145},"typing")
+  //.to($(".key[data-key='d']"),.1,{fill: "white"},"typing")
+  //.to($(".key[data-key='d']"),.1,{fill: fadedWhite},"typing+=.1")
+  //i
+  .to(pointhand,.2,{x:50,y:119},"typing+=.2")
+  //.to($(".key[data-key='i']"),.1,{fill: "white"},"typing+=.2")
+  //.to($(".key[data-key='i']"),.1,{fill: fadedWhite},"typing+=.3")
+  //s
+  .to(pointhand,.2,{x:-55,y:150},"typing+=.4")
+  //.to($(".key[data-key='s']"),.1,{fill: "white"},"typing+=.4")
+  //.to($(".key[data-key='s']"),.1,{fill: fadedWhite},"typing+=.5")
+  //c
+  .to(pointhand,.2,{x:-15,y:182},"typing+=.6")
+  //.to($(".key[data-key='c']"),.1,{fill: "white"},"typing+=.6")
+  //.to($(".key[data-key='c']"),.1,{fill: fadedWhite},"typing+=.7")
+  //u
+  .to(pointhand,.2,{x:30,y:120},"typing+=.8")
+  //.to($(".key[data-key='u']"),.1,{fill: "white"},"typing+=.8")
+  //.to($(".key[data-key='u']"),.1,{fill: fadedWhite},"typing+=.9")
+  //s
+  .to(pointhand,.2,{x:-55,y:150},"typing+=1")
+  //.to($(".key[data-key='s']"),.1,{fill: "white"},"typing+=1")
+  //.to($(".key[data-key='s']"),.1,{fill: fadedWhite},"typing+=1.1")
+  //s
+  .to(pointhand,.2,{x:-55,y:150},"typing+=1.2")
+  //.to($(".key[data-key='s']"),.1,{fill: "white"},"typing+=1.2")
+  //.to($(".key[data-key='s']"),.1,{fill: fadedWhite},"typing+=1.4")
+  //e
+  .to(pointhand,.2,{x:-45,y:120},"typing+=1.2")
+  //.to($(".key[data-key='e']"),.1,{fill: "white"},"typing+=1.4")
+  //.to($(".key[data-key='e']"),.1,{fill: fadedWhite},"typing+=1.5")
+  //d
+  .to(pointhand,.2,{x:-30,y:145},"typing+=1.6")
+  //.to($(".key[data-key='d']"),.1,{fill: "white"},"typing+=1.6")
+  //.to($(".key[data-key='d']"),.1,{fill: fadedWhite},"typing+=1.7")
+  //space
+  .to(pointhand,.2,{x:5,y:215},"typing+=1.8")
+  //.to($(".key[data-key='space']"),.1,{fill: "white"},"typing+=1.8")
+  //.to($(".key[data-key='space']"),.1,{fill: fadedWhite},"typing+=1.9") 
+  //------
+  //C
+  .to(pointhand,.2,{x:-20,y:180},"typing+=2")
+  //.to($(".key[data-key='c']"),.1,{fill: "white"},"typing+=2")
+  //.to($(".key[data-key='c']"),.1,{fill: fadedWhite},"typing+=2")
+  //a
+  .to(pointhand,.2,{x:-74,y:149},"typing+=2.2")
+  //.to($(".key[data-key='a']"),.1,{fill: "white"},"typing+=2.2")
+  //.to($(".key[data-key='a']"),.1,{fill: fadedWhite},"typing+=2.3")
+  //r
+  .to(pointhand,.2,{x:-26,y:118},"typing+=2.4")
+  //.to($(".key[data-key='r']"),.1,{fill: "white"},"typing+=2.4")
+  //.to($(".key[data-key='r']"),.1,{fill: fadedWhite},"typing+=2.5")
+  //l
+  .to(pointhand,.2,{x:74,y:151},"typing+=2.6")
+  //.to($(".key[data-key='l']"),.1,{fill: "white"},"typing+=2.6")
+  //.to($(".key[data-key='l']"),.1,{fill: fadedWhite},"typing+=2.7")
+  //space
+  .to(pointhand,.2,{x:5,y:215},"typing+=2.8")
+  //.to($(".key[data-key='space']"),.1,{fill: "white"},"typing+=2.8")
+  //.to($(".key[data-key='space']"),.1,{fill: fadedWhite},"typing+=2.9") 
+  //------
+
+  //S
+  .to(pointhand,.2,{x:-55,y:150},"typing+=3")
+  //.to($(".key[data-key='s']"),.1,{fill: "white"},"typing+=3")
+  //.to($(".key[data-key='s']"),.1,{fill: fadedWhite},"typing+=3.1")
+  //a
+  .to(pointhand,.2,{x:-74,y:149},"typing+=3.2")
+  //.to($(".key[data-key='a']"),.1,{fill: "white"},"typing+=3.2")
+  //.to($(".key[data-key='a']"),.1,{fill: fadedWhite},"typing+=3.3")
+  //g
+  .to(pointhand,.2,{x:2,y:149},"typing+=3.4")
+  //.to($(".key[data-key='g']"),.1,{fill: "white"},"typing+=3.4")
+  //.to($(".key[data-key='g']"),.1,{fill: fadedWhite},"typing+=3.5")
+  //a
+  .to(pointhand,.2,{x:74,y:151},"typing+=3.6")
+  //.to($(".key[data-key='a']"),.1,{fill: "white"},"typing+=3.6")
+  //.to($(".key[data-key='a']"),.1,{fill: fadedWhite},"typing+=3.7")
+  //n
+  .to(pointhand,.2,{x:36,y:181},"typing+=3.8")
+  //.to($(".key[data-key='n']"),.1,{fill: "white"},"typing+=3.8")
+  //.to($(".key[data-key='n']"),.1,{fill: fadedWhite},"typing+=3.9")
+  //space
+  .to(pointhand,.2,{x:83,y:185},"typing+=4")
+  //.to($(".key[data-key='del']"),.1,{fill: "white"},"typing+=4")
+  //.to($(".key[data-key='del']"),.1,{fill: fadedWhite},"typing+=4.1") 
+  //------
+  .add("ok")
+   //OK
+  .to(pointhand,.2,{x:73,y:67},"ok+=1")
+  .to(description,.2,{autoAlpha:0},"ok+=1.5")
+  .to($("#description"),.1,{text:"Discuss Carl Sagan.",fill:dark},"ok")
+  .to(pointhand,.2,{x:-40,y:137},"ok+=2")
+  .to(pointhand,.5,{x:40,y:137,ease:Power4.easeOut})
+  //------
+
   .add("organizeEnd")
 //share
   .add("shareStart")
   .to(people,.2,{autoAlpha:0},"shareStart")
   .to($("body"),.5,{backgroundColor:dark})
   .to(handphone,.5,{x:0,y:800,scale:1,ease:Power4.easeOut})
+  .to(studentScene,.2,{autoAlpha:1,scale:.8,y:-60,x:90})
   .to(footer,.5,{bottom:"0",textAlign:"left",left:"24px", ease:Power4.easeOut},"shareStart")
   .to($("footer img"),.5,{width:"120px", height:"120px",display:"inline",margin:"0",ease:Power4.easeOut},"shareStart")
   .add("shareEnd")
 //download
   .add("downloadStart")
+  .to(studentScene,.2,{y:300, ease: Power4.easeOut})
   .to(people,.2,{autoAlpha:0},"downloadStart")
   .to($("body"),.5,{backgroundColor:blue})
   .to(footer,.5,{bottom:"50vh",textAlign:"center",left:0})

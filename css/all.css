@@ -432,6 +432,28 @@ p.lead {
 .flesh-shadow {
   fill: #d6a983; }
 
+#head {
+  fill: #f0bc8c; }
+
+#mouth, #hair {
+  fill: #a88a73; }
+
+.features {
+  fill: none;
+  stroke: #a88a73;
+  stroke-linecap: round;
+  stroke-miterlimit: 10;
+  stroke-width: 7px; }
+
+#headphones {
+  fill: black; }
+
+#eyes circle {
+  fill: #353F50; }
+
+#shirt {
+  fill: #39beca; }
+
 #description {
   font-size: 9px;
   fill: #c3cbd5;
