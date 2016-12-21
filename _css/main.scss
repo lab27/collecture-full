@@ -451,6 +451,37 @@ font-family: 'ginger-light';
 }
 
 //illy
+#dog {
+  stroke-width:3;
+}
+
+#nose {
+  fill: white;
+  stroke: white;
+}
+ #eye {
+  fill: $dark;
+ }
+#tail {
+  fill: $blue;
+}
+ #ear {
+  fill: $green;
+ }
+
+#dog-main,#leg {
+  fill: none;
+  stroke: white;
+}
+
+#leg {
+  fill: rgba($light-gray,.2);
+}
+#a {
+  polyline, line {
+    stroke: $red;
+  }
+}
 #pen {
   fill: $green;
 }

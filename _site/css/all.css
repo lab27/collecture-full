@@ -712,6 +712,32 @@ p.lead {
 #UI-holder {
   stroke: #c3cbd5; }
 
+#dog {
+  stroke-width: 3; }
+
+#nose {
+  fill: white;
+  stroke: white; }
+
+#eye {
+  fill: #353F50; }
+
+#tail {
+  fill: #39beca; }
+
+#ear {
+  fill: #4bddad; }
+
+#dog-main, #leg {
+  fill: none;
+  stroke: white; }
+
+#leg {
+  fill: rgba(244, 249, 250, 0.2); }
+
+#a polyline, #a line {
+  stroke: #fd4a49; }
+
 #pen {
   fill: #4bddad; }
 
