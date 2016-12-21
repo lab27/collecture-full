@@ -484,29 +484,23 @@ body {
 
 #people-root, #handphone-root {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0; }
-
-#handphone-root {
-  width: 80vw;
+  width: 100vw;
   bottom: 0;
-  left: 50vw;
-  margin-left: -40vw;
-  top: 25vh; }
+  left: 0;
+  top: 50vh; }
 
 footer {
   position: absolute;
   bottom: -17px;
-  left: 24px;
+  left: 0;
   width: 100vw;
   text-align: center;
   height: 120px;
   transition: all .2s ease; }
   @media (min-width: 640px) {
     footer {
-      text-align: left; } }
+      text-align: left;
+      left: 24px; } }
   footer img {
     width: 120px;
     height: 120px; }
@@ -516,15 +510,19 @@ a {
   text-decoration: none; }
 
 .header-right {
-  width: 50%;
   display: inline-block;
   float: right;
   text-align: right; }
 
 #responsive {
-  display: inline-block;
+  display: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 24px;
   margin-right: 24px;
   color: lemonchiffon;
+  background: #353F50;
   font-family: "ginger-light"; }
   @media (min-width: 0px) {
     #responsive:after {
@@ -570,22 +568,33 @@ a {
   padding-right: 24px; }
 
 h1 {
-  font-size: 2rem;
+  font-size: 8vw;
+  line-height: 2rem;
   margin-bottom: 1rem;
   letter-spacing: .05rem; }
   @media (min-width: 640px) {
     h1 {
-      font-size: 3rem; } }
+      font-size: 6vw; } }
+  @media (min-width: 1024px) {
+    h1 {
+      font-size: 6vw; } }
+  @media (min-width: 1200px) {
+    h1 {
+      font-size: 6vw; } }
+  @media (min-width: 1440px) {
+    h1 {
+      font-size: 6vw; } }
 
 p.lead {
-  font-size: 1.1rem;
+  font-size: 1rem;
+  max-width: 70vw;
   line-height: 1.5rem;
   margin: 0 auto;
   letter-spacing: .04rem;
   font-family: 'ginger-light'; }
   @media (min-width: 640px) {
     p.lead {
-      max-width: 20vw; } }
+      max-width: 80vw; } }
 
 #fp-nav ul li a span, .fp-slidesNav ul li a span {
   background: white; }
@@ -755,16 +764,20 @@ p.lead {
   .photon:nth-child(2) {
     fill: #4bddad; }
 
-.modal h1 {
-  color: #353F50;
-  font-size: 2rem; }
-
-.modal p {
-  max-width: 50%;
-  margin: 0 auto;
-  color: #353F50;
-  font-family: 'ginger-light';
-  line-height: 1.4rem; }
-  .modal p a {
-    color: #39beca;
-    text-decoration: underline; }
+.modal {
+  width: 90vw; }
+  @media (min-width: 640px) {
+    .modal {
+      width: 50vw; } }
+  .modal h1 {
+    color: #353F50;
+    font-size: 2rem; }
+  .modal p {
+    max-width: 90%;
+    margin: 0 auto;
+    color: #353F50;
+    font-family: 'ginger-light';
+    line-height: 1.4rem; }
+    .modal p a {
+      color: #39beca;
+      text-decoration: underline; }
