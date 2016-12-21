@@ -488,6 +488,15 @@ body {
   bottom: 0;
   left: 0;
   top: 50vh; }
+  @media (min-width: 640px) {
+    #people-root, #handphone-root {
+      left: 50vw;
+      margin-left: -40vw;
+      width: 80vw;
+      top: 30vh; } }
+  @media (min-width: 1024px) {
+    #people-root, #handphone-root {
+      top: 30vh; } }
 
 footer {
   position: absolute;
@@ -514,30 +523,22 @@ a {
   float: right;
   text-align: right; }
 
-#responsive {
-  display: absolute;
-  top: 0;
-  left: 0;
-  width: 100px;
-  height: 24px;
-  margin-right: 24px;
-  color: lemonchiffon;
-  background: #353F50;
-  font-family: "ginger-light"; }
+a.responsive {
+  content: ""; }
   @media (min-width: 0px) {
-    #responsive:after {
+    a.responsive:after {
       content: "small"; } }
   @media (min-width: 640px) {
-    #responsive:after {
+    a.responsive:after {
       content: "medium"; } }
   @media (min-width: 1024px) {
-    #responsive:after {
+    a.responsive:after {
       content: "large"; } }
   @media (min-width: 1200px) {
-    #responsive:after {
+    a.responsive:after {
       content: "xlarge"; } }
   @media (min-width: 1440px) {
-    #responsive:after {
+    a.responsive:after {
       content: "xxlarge"; } }
 
 .float-right {
@@ -574,16 +575,17 @@ h1 {
   letter-spacing: .05rem; }
   @media (min-width: 640px) {
     h1 {
-      font-size: 6vw; } }
+      font-size: 2rem; } }
   @media (min-width: 1024px) {
     h1 {
-      font-size: 6vw; } }
+      font-size: 3rem; } }
   @media (min-width: 1200px) {
     h1 {
-      font-size: 6vw; } }
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem; } }
   @media (min-width: 1440px) {
     h1 {
-      font-size: 6vw; } }
+      font-size: 4rem; } }
 
 p.lead {
   font-size: 1rem;
@@ -594,7 +596,7 @@ p.lead {
   font-family: 'ginger-light'; }
   @media (min-width: 640px) {
     p.lead {
-      max-width: 80vw; } }
+      max-width: 50vw; } }
 
 #fp-nav ul li a span, .fp-slidesNav ul li a span {
   background: white; }

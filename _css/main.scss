@@ -131,7 +131,13 @@ body {
   // margin-left: -40vw;
   top: 50vh;
   @include respond-to(medium){
-
+    left:50vw;
+    margin-left: -40vw;
+    width: 80vw;
+  top:30vh;
+  }
+  @include respond-to(large){
+  top:30vh;
   }
 }
 
@@ -182,16 +188,17 @@ a {
 	text-align: right;
 }
 
-#responsive {
-  display: absolute;
-  top:0;
-  left:0;
-  width:100px;
-  height: 24px;
-  margin-right: 24px;
-  color: lemonchiffon;
-  background:$dark;
-  font-family: "ginger-light";
+a.responsive {
+  content: "";
+  // display: absolute;
+  // top:0;
+  // left:0;
+  // width:100px;
+  // height: 24px;
+  // margin-right: 24px;
+  // color: lemonchiffon;
+  // background:$dark;
+  // font-family: "ginger-light";
   @include respond-to(small){
     &:after {
     content: "small"
@@ -263,19 +270,20 @@ h1 {
 	letter-spacing: .05rem;
 
 @include respond-to(medium) { 
-	font-size: 6vw;
+	font-size: 2rem;
 }
 
 @include respond-to(large) { 
-  font-size: 6vw;
+  font-size: 3rem;
 }
 
 @include respond-to(xlarge) { 
-  font-size: 6vw;
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
 }
 
 @include respond-to(xxlarge) { 
-  font-size: 6vw;
+  font-size: 4rem;
 }
 
 }
@@ -288,7 +296,7 @@ margin: 0 auto;
 letter-spacing:.04rem;
 font-family: 'ginger-light';
 @include respond-to(medium){
-	max-width: 80vw;
+	max-width: 50vw;
 
 }
 }

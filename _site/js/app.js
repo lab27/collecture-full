@@ -430,7 +430,7 @@ $(document).ready(function() {
         verticalCentered: false,
         paddingTop: '5em',
         paddingBottom: '10px',
-        fixedElements: '#header, .footer, #responsive',
+        fixedElements: '#header, .footer',
         responsiveWidth: 0,
         responsiveHeight: 0,
         responsiveSlides: false,
