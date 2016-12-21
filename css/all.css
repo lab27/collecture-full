@@ -712,6 +712,23 @@ p.lead {
 #UI-holder {
   stroke: #c3cbd5; }
 
+#pen {
+  fill: #4bddad; }
+
+#book {
+  fill: #f4f9fa; }
+
+#photon-dot {
+  fill: white; }
+
+.photon {
+  stroke: white;
+  fill: #fd4a49; }
+  .photon:last-child {
+    fill: #c9a03a; }
+  .photon:nth-child(2) {
+    fill: #4bddad; }
+
 .modal h1 {
   color: #353F50;
   font-size: 2rem; }

@@ -6,7 +6,7 @@ $dark: #353F50;
 $gray: #c3cbd5;
 $light-gray: #f4f9fa;
 $orange: #c9a03a;
-$red: #4d4a49;
+$red: #fd4a49;
 @import "modal";
 
 * {
@@ -448,6 +448,28 @@ font-family: 'ginger-light';
 
 #UI-holder {
   stroke: $gray;
+}
+
+//illy
+#pen {
+  fill: $green;
+}
+#book {
+  fill: $light-gray;
+}
+#photon-dot {
+  fill: white;
+}
+.photon {
+ stroke: white;
+ fill: $red;
+&:last-child{
+  fill: $orange;
+}
+
+&:nth-child(2){
+  fill: $green;
+}
 }
 
 //modal 

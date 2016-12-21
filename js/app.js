@@ -12,7 +12,6 @@ http://www.opensource.org/licenses/mit-license.php
 -------------------------------------------------- */
 !function(n){function e(n,e,i){n.setSpeed(null).setTiming(null),e.setSpeed(null).setTiming(null),(250!=i.speed||"ease"!=i.timing)&&(n.setSpeed(i.speed).setTiming(i.timing),e.setSpeed(i.speed).setTiming(i.timing))}n.fn.setSpeed=function(n){return this.css({"-webkit-transition-duration":n+"ms","-moz-transition-duration":n+"ms","-ms-transition-duration":n+"ms","-o-transition-duration":n+"ms","transition-duration":n+"ms"})},n.fn.setTiming=function(n){return this.css({"-webkit-transition-timing-function":n,"-moz-transition-timing-function":n,"-ms-transition-timing-function":n,"-o-transition-timing-function":n,"transition-timing-function":n})},n.fn.quickModal=function(i,o){function a(n){27==n.keyCode&&c.is(":visible")&&s.enableEsc&&t()}function t(){r.quickModal("close",s),d.unbind("keyup",a),l.unbind("click"),n("#modal-background").unbind("click")}if(null!==i&&"string"==typeof i){var s=n.extend({animation:"fade-zoom",speed:250,timing:"ease",closeModalSelector:".close-modal",enableEsc:!0,enableClickAway:!0,enableBodyScroll:!1,appendBackgroundTo:"body",onOpen:function(){},onClose:function(){}},o),d=n("body"),l=n(s.closeModalSelector),c=n(".modal"),r=this;switch(n("#modal-background").length||n(s.appendBackgroundTo).append('<div id="modal-background"></div>'),e(r,n("#modal-background"),s),c.removeClass().addClass("modal").addClass("animation-"+s.animation),i){case"open":s.enableBodyScroll||d.addClass("disable-scroll"),c.hide(),r.show(),d.keyup(a),n("#modal-background").show(),setTimeout(function(){s.enableClickAway&&n("#modal-background").click(t),n("#modal-background").addClass("visible"),r.addClass("visible"),r.trigger("modalopen"),s.onOpen.call()},25),l.click(function(n){n.preventDefault(),t()});break;case"close":d.removeClass("disable-scroll"),n("#modal-background").removeClass("visible"),r.removeClass("visible"),s.onClose.call(),setTimeout(function(){n("#modal-background").hide(),r.hide(),r.trigger("modalclose")},s.speed);break;case"trigger":var u=r.data("modal-id"),m=n("#"+u);m.quickModal("open",s);break;default:console.error("The method you entered does not exist.")}}else{var r=this;r.click(function(e){e.preventDefault();var o=n(this).data("modal-id"),a=n("#"+o);void 0===o?console.error('No "data-modal-id" attribute has been set.'):a.quickModal("open",i)})}return this}}(jQuery);
 
-
 $(document).ready(function() {
     $('.open-modal').quickModal();
 });
@@ -70,14 +69,17 @@ var getCurrentAnchor = function(anchor){
     crntAnchor = anchor
 }
 
-
-
 //Initial sets:
 TweenMax.set(pointhand,{x:1000,y:1000})
 TweenMax.set(handphone,{x:0,y:1000})
 TweenMax.set(groupBox, {fill: green})
 TweenMax.set(description, {autoAlpha: 0})
 TweenMax.set($("#shadow"),{autoAlpha:.3})
+TweenMax.set($(".photon"),{transformOrigin:"center center"})
+TweenMax.set($(".photon:last-child"),{rotation:-135})
+TweenMax.set($(".photon.2"),{rotation:135})
+TweenMax.set($("g#atom"),{x:2000, y:"-=180"})
+TweenMax.set($("g#literature"),{x:2000, y:"+=50"})
 
 TweenMax.set($(".group-tab.private .box"), {fill: "white"})
 
@@ -199,12 +201,15 @@ tl_main
 
   .add("group1")
   .to(pointhand,.5,{x:85,y:0, ease:Power4.easeOut},"group1")
+  .to($("#atom"),.2,{x:0},"group1+=.7")
   .to($("#new-group-1"),.2,{autoAlpha:1},"group1+=.7")
   .to($("#new-group-1 .box"),.2,{fill:"white"},"group1+=.9")
   .to(pointhand,.5,{x:200,y:300, ease:Power4.easeInOutCubic},"group1+=.7")
 
   .add("group2")
   .to(pointhand,.5,{x:85,y:0, ease:Power4.easeOut},"group2+=1")
+  .to($("#atom"),.2,{x:-2000},"group2+=1.7")
+  .to($("#literature"),.2,{x:0},"group2+=1.7")
   .to($("#new-group-2"),.2,{autoAlpha:1},"group2+=1.7")
   .to($("#new-group-2 .box"),.2,{fill:"white"},"group2+=1.9")
   .to(body,.5,{backgroundColor:orange},"group2+=1")
